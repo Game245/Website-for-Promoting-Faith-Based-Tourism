@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <section
-        className="relative w-full min-h-screen  bg-cover bg-center flex items-center justify-center text-white backdrop-blur-md"
+        className="relative md:w-full md:min-h-screen h-auto  bg-cover bg-center flex items-center justify-center text-white backdrop-blur-md"
         style={{ backgroundImage: `url(${Temple})` }}
       >
-        <div className="absolute inset-0  w-full h-screen bg-black/20 backdrop-blur-md "></div>
+        <div className="absolute inset-0  md:w-full md:h-screen h-auto bg-black/20 backdrop-blur-md "></div>
         <div className="p-8 rounded-lg text-center  m-auto z-10">
           <h1 className="text-4xl md:text-6xl font-bold">
             The Development of a Website for Promoting Faith-Based Tourism in
@@ -23,12 +23,12 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="container mx-auto flex flex-col items-center justify-center gap-8 h-screen px-4">
-        <h1 className="text-center text-2xl font-bold">
+      <section className="container mx-auto  flex flex-col items-center justify-center gap-8 md:h-screen h-auto px-4">
+        <h1 className="text-center text-2xl font-bold py-3">
           The Development of a Website for Promoting Faith-Based Tourism in Ubon
           Ratchathani
         </h1>
-        <div className="w-full max-w-4xl">
+        <div className="w-full ">
           <Card />
         </div>
       </section>

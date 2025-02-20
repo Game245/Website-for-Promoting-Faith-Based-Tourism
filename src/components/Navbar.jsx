@@ -13,7 +13,7 @@ function Navbar() {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        isActive ? "text-red-500" : "text-black hover:text-sky-500"
+        isActive ? "text-red-500" : "text-black hover:text-sky-500 hover:bg-gray-300 p-2 rounded-lg transition-colors duration-300 ease-in-out"
       }
     >
       {children}
@@ -21,7 +21,7 @@ function Navbar() {
   );
 
   return (
-    <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 backdrop-blur-md">
+    <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 bg-black/20 backdrop-blur-md">
       <div className="container mx-auto max-w-7xl h-auto p-5 flex flex-col md:flex-row md:justify-between md:items-center md:h-[80px]">
         <Link>
           <p>LOGO</p>
@@ -36,7 +36,7 @@ function Navbar() {
           </li>
 
           <li className="md:inline-block relative group md:items-center">
-            <div className="my-2 flex rounded-lg flex-row items-center md:mx-4 hover:text-sky-500  md:hover:bg-transparent hover:bg-gray-300 p-2 md:rounded-lg transition-colors duration-300 ease-in-out cursor-pointer">
+            <div className="my-2 flex rounded-lg flex-row items-center  hover:text-sky-500   hover:bg-gray-300 p-2 md:rounded-lg transition-colors duration-300 ease-in-out cursor-pointer">
               DropDown <IoMdArrowDropdown />
             </div>
             <div
