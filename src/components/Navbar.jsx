@@ -21,7 +21,7 @@ function Navbar() {
   );
 
   return (
-    <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 bg-black/20 backdrop-blur-md">
+    <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 bg-white/20 backdrop-blur-md">
       <div className="container mx-auto max-w-7xl h-auto p-5 flex flex-col md:flex-row md:justify-between md:items-center md:h-[80px]">
         <Link>
           <p>LOGO</p>
@@ -32,12 +32,12 @@ function Navbar() {
           } flex flex-col my-8 md:flex md:flex-row md:bg-zine-600 rounded-lg p-2`}
         >
           <li className="my-2 md:mx-4  hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
-            <ActiveLink to="/">Home</ActiveLink>
+            <ActiveLink to="/">หน้าแรก</ActiveLink>
           </li>
 
           <li className="md:inline-block relative group md:items-center">
             <div className="my-2 flex rounded-lg flex-row items-center  hover:text-sky-500   hover:bg-gray-300 p-2 md:rounded-lg transition-colors duration-300 ease-in-out cursor-pointer">
-              DropDown <IoMdArrowDropdown />
+            แนะนำ <IoMdArrowDropdown />
             </div>
             <div
               id="dropdown"
@@ -47,31 +47,31 @@ function Navbar() {
                 to="/destinations"
                 className="md:block my-2 mx-4   hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
               >
-                Destinations
+                สถานที่ขอพร
               </ActiveLink>
               <ActiveLink
                 to="/myth"
                 className="md:block my-2 mx-4  hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
               >
-                Legends & Myth
+                ตำนานและความเชื่อ
               </ActiveLink>
               <ActiveLink
                 to="/rituals"
                 className="md:block my-2 mx-4  hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
               >
-                Rituals & Worship
+                วิธีการไหว้และพิธีกรรม
               </ActiveLink>
             </div>
           </li>
 
+          <li className="my-2 md:mx-4  hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
+            <ActiveLink to="/blog">บทความสายมู</ActiveLink>
+          </li>
           <li className="my-2 md:mx-4  hover:bg-gray-300  md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
-            <ActiveLink to="/about">About</ActiveLink>
+            <ActiveLink to="/about">เกี่ยวกับเรา</ActiveLink>
           </li>
           <li className="my-2 md:mx-4  hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
-            <ActiveLink to="/contact">Contant</ActiveLink>
-          </li>
-          <li className="my-2 md:mx-4  hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
-            <ActiveLink to="/blog">Spiritual Blog</ActiveLink>
+            <ActiveLink to="/contact">ติดต่อเรา</ActiveLink>
           </li>
         </ul>
         <FaBars
