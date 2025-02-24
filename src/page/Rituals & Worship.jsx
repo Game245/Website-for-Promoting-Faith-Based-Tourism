@@ -13,7 +13,7 @@ export default function Rituals_Worship() {
   const categories = ["ทั้งหมด", "การไหว้พระ", "การบูชาเทพ", "ของไหว้"];
 
   return (
-    <section className="container mx-auto  md:h-screen flex flex-col gap-8 mt-5 h-auto p-4">
+    <section className="container mx-auto  h-auto flex flex-col gap-8 mt-5 h-auto p-4">
       <h1 className="text-center text-2xl font-bold py-3 hover:underline">
         วิธีการไหว้และพิธีกรรม
       </h1>
