@@ -3,12 +3,11 @@ import { createContext, useState, useEffect } from "react";
 export const LoadingContext = createContext();
 
 export const LoadingProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true); // ✅ ตั้งค่าเริ่มต้นเป็น true
-
+  const [loading, setLoading] = useState(true); 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false); 
-    }, 2000);
+    }, 300);
   }, []);
 
   return (

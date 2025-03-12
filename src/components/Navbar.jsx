@@ -24,7 +24,7 @@ function Navbar() {
     <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 bg-white/20 backdrop-blur-md">
       <div className="container mx-auto max-w-7xl h-auto p-5 flex flex-col md:flex-row md:justify-between md:items-center md:h-[80px]">
         <Link>
-          <p>LOGO</p>
+          <p>การท่องเที่ยวจังหวัดอุบลราชธานี</p>
         </Link>
         <ul
           className={`${
@@ -62,10 +62,6 @@ function Navbar() {
                 วิธีการไหว้และพิธีกรรม
               </ActiveLink>
             </div>
-          </li>
-
-          <li className="my-2 md:mx-4  hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
-            <ActiveLink to="/blog">บทความสายมู</ActiveLink>
           </li>
           <li className="my-2 md:mx-4  hover:bg-gray-300  md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
             <ActiveLink to="/about">เกี่ยวกับเรา</ActiveLink>
