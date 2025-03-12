@@ -4,7 +4,7 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent } from "../../DataContent";
+import { Datacontent,Image } from "../../DataContent";
 import Card from "../../components/Card";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
@@ -20,6 +20,38 @@ export default function ContentTample1() {
     setLikes(!likes);
   };
 
+  // ฟังก์ชันแชร์
+  const shareContent = () => {
+    const url = window.location.href; // URL ของหน้าปัจจุบัน
+    const text = `${Datacontent[0].title} \n ${Datacontent[0].recommend}`; // ข้อความที่จะแชร์
+
+    // ใช้ window.open สำหรับแชร์บน Facebook, Twitter, WhatsApp
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}&quote=${encodeURIComponent(text)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(text)}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      text
+    )}%20${encodeURIComponent(url)}`;
+
+    // สร้างหน้าต่างใหม่สำหรับการแชร์
+    const shareWindow = window.open("", "_blank", "width=600,height=400");
+    shareWindow.document.write(`
+      <html>
+        <head><title>แชร์</title></head>
+        <body style="font-family: Arial, sans-serif; padding: 20px;">
+          <h3>แชร์ไปยัง</h3>
+          <ul>
+            <li><a href="${shareUrl}" target="_blank" style="color: #3b5998; text-decoration: none; font-size: 18px;">Facebook</a></li>
+            <li><a href="${twitterUrl}" target="_blank" style="color: #00aced; text-decoration: none; font-size: 18px;">Twitter</a></li>
+            <li><a href="${whatsappUrl}" target="_blank" style="color: #25D366; text-decoration: none; font-size: 18px;">WhatsApp</a></li>
+          </ul>
+        </body>
+      </html>
+    `);
+  };
   return (
     <>
       <div className="container mx-auto  p-4  w-full">
@@ -42,17 +74,18 @@ export default function ContentTample1() {
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
-                      src=""
-                      alt=""
-                      className="w-8 h-8 bg-gray-300 rounded-full "
+                      src={Image[0].img}
+                      alt={Image[0].title}
+                      className="w-8 h-8  rounded-full "
                     />
                     <p>UBRU</p>
                   </div>
                   <div>:</div>
                   <div>{currentDate}</div>
                 </div>
+                {/* button แชร์ */}
                 <div>
-                  <IoIosShareAlt className="text-3xl cursor-pointer" />
+                  <IoIosShareAlt className="text-3xl cursor-pointer" onClick={shareContent} />
                 </div>
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
@@ -73,7 +106,7 @@ export default function ContentTample1() {
                 ></iframe>
               </div>
             </div>
-            {/* หัวข้อ */}
+            {/* slide */}
             <div className="flex justify-center mt-6">
               <a
                 href="https://www.facebook.com/share/p/1Bvkoumx5p/"
@@ -86,7 +119,6 @@ export default function ContentTample1() {
                   className="w-full h-auto  rounded-lg  object-cover"
                 />
               </a>
-              
             </div>
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
@@ -168,3 +200,5 @@ export default function ContentTample1() {
     </>
   );
 }
+
+

@@ -40,7 +40,7 @@ export default function About() {
         <h1 className="text-3xl font-bold">คณะผู้จัดทำ</h1>
       </div>
       {/* 1 รูปใหญ่ตรงกลาง */}
-      <section className="flex justify-center mt-12">
+      <section className="flex justify-center mt-5">
         <div className="flex flex-col items-center">
           <div className="w-32  md:w-30  h-auto">
             {" "}
@@ -53,7 +53,7 @@ export default function About() {
       </section>
 
       {/* 3 รูปในแถวเดียวกัน (เมื่อจอใหญ่) หรือ 1-1-1 (เมื่อจอเล็ก) */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center mt-12">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 justify-items-center mt-5">
         <div className="flex flex-col items-center">
           <div className="w-32  md:w-30  h-auto">
             <img src={kunakon} alt="" className="w-full h-auto rounded-lg" />
@@ -80,7 +80,7 @@ export default function About() {
       </section>
 
       {/* อีก 3 รูป (เมื่อจอใหญ่) หรือ 1-1-1 (เมื่อจอเล็ก) */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center mt-12 my-20">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 justify-items-center mt-5 my-20">
         <div className="flex flex-col items-center">
           <div className="w-32  md:w-30 h-auto">
             <img src={Sok} alt="" className="w-full h-auto rounded-lg" />

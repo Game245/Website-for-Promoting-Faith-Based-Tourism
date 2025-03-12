@@ -53,7 +53,7 @@ export default function Legends_Myth() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full h-auto justify-items-center mt-6">
         {searchFilteredData.length > 0 ? (
           searchFilteredData.map((item) => (
-            <Link key={item.id} to={`/contenttample${item.id}`}>
+            <Link key={item.id} to={`/myth${item.id}`}>
               <Card {...item} />
             </Link>
           ))

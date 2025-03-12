@@ -4,7 +4,7 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent } from "../../DataContent";
+import { Datacontent,Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
@@ -12,6 +12,7 @@ import Card from "../../components/Card";
 export default function Rituals6() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
+  const displayedItems = [Datacontent[5].id];
 
   useEffect(() => {
     // โหลดสคริปต์ของ TikTok หลังจาก mount
@@ -47,9 +48,9 @@ export default function Rituals6() {
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
-                      src=""
-                      alt=""
-                      className="w-8 h-8 bg-gray-300 rounded-full "
+                      src={Image[0].img}
+                      alt={Image[0].title}
+                      className="w-8 h-8 rounded-full "
                     />
                     <p>UBRU</p>
                   </div>
@@ -69,14 +70,26 @@ export default function Rituals6() {
             {/* หัวข้อ */}
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
-              <h1 className="text-2xl font-bold">
-                
-              </h1>
-              <p className="leading-relaxed whitespace-pre-line">{Datacontent[5].wish}</p>
+              <h1 className="text-2xl font-bold"></h1>
+              <p className="leading-relaxed whitespace-pre-line">
+                {Datacontent[5].wish}
+              </p>
             </div>
             {/* social media */}
             <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
-              <h1>tags</h1>
+              <div className="flex gap-2 items-center">
+                {(Array.isArray(Datacontent[5].tagsmyth)
+                  ? Datacontent[5].tagsmyth
+                  : []
+                ).map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm  text-[10px] font-bold  "
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
               <button
                 onClick={clicklikes}
                 className="flex items-center gap-2 cursor-pointer"
@@ -141,11 +154,24 @@ export default function Rituals6() {
         <section className="mt-10 mb-10">
           {/* Additional Information */}
           <h1 className="text-center text-2xl font-bold py-3">เพิ่มเติม</h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
-            {Datacontent.slice(0, 3).map((item) => (
-              <Card key={item.id} {...item} />
-            ))}
-          </div>
+
+          {Datacontent.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
+              {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
+                .slice(2, 5) // ✅ เอาแค่ 3 รายการ
+                .map((item) => (
+                  <Link key={item.id} to={`/myth${item.id}`}>
+                    <Card {...item} />
+                  </Link>
+                ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-40">
+              <p className="text-gray-500 text-center">
+                ❌ ไม่มีข้อมูลเพิ่มเติม
+              </p>
+            </div>
+          )}
         </section>
       </div>
     </>

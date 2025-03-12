@@ -10,6 +10,14 @@ import HB from "./assets/images/HB.jpg";
 import TSM from "./assets/images/TSM.jpg";
 import PPD from "./assets/images/PPD.jpg";
 import PPN from "./assets/images/PPN.jpg";
+import LOGO from "./assets/images/LOGO.png";
+
+export const Image = [
+  {
+    img:LOGO,
+    title:"LOGO",
+  },
+];
 
 export const Datacontent = [
   {
@@ -319,4 +327,5 @@ export const Datacontent = [
     `,
     maps: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4610.726856926053!2d104.98001467584929!3d15.270265685299352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31168081cd66c3fb%3A0x779b90ad3cde8612!2z4Lin4Lix4LiU4Lia4LmJ4Liy4LiZ4Lia4Liy4LiBICjguKfguLHguJTguJvguYjguLLguJ7guLTguIbguYDguJnguKjguKfguKMp!5e1!3m2!1sth!2sth!4v1740900717120!5m2!1sth!2sth",
   },
+  
 ];

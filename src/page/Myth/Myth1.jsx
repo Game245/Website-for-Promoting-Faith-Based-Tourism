@@ -4,7 +4,7 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent } from "../../DataContent";
+import { Datacontent,Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
@@ -42,9 +42,9 @@ export default function Myth1() {
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
-                      src=""
-                      alt=""
-                      className="w-8 h-8 bg-gray-300 rounded-full "
+                      src={Image[0].img}
+                      alt={Image[0].title}
+                      className="w-8 h-8 rounded-full "
                     />
                     <p>UBRU</p>
                   </div>
@@ -71,7 +71,19 @@ export default function Myth1() {
             </div>
             {/* social media */}
             <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
-              <h1>tags</h1>
+              <div className="flex gap-2 items-center">
+                {(Array.isArray(Datacontent[0].tagsmyth)
+                  ? Datacontent[0].tagsmyth
+                  : []
+                ).map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm  text-[10px] font-bold  "
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
               <button
                 onClick={clicklikes}
                 className="flex items-center gap-2 cursor-pointer"

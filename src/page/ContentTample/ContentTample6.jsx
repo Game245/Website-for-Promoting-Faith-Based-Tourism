@@ -4,7 +4,7 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent } from "../../DataContent";
+import { Datacontent, Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
@@ -40,9 +40,9 @@ export default function ContentTample6() {
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
-                      src=""
-                      alt=""
-                      className="w-8 h-8 bg-gray-300 rounded-full "
+                      src={Image[0].img}
+                      alt={Image[0].title}
+                      className="w-8 h-8 rounded-full "
                     />
                     <p>UBRU</p>
                   </div>

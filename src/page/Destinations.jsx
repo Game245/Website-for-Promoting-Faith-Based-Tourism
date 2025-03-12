@@ -30,7 +30,7 @@ export default function Destinations() {
   return (
     <section className="container mx-auto flex flex-col gap-8 mt-5 p-4">
       <h1 className="text-center text-2xl font-bold py-3">
-        สถานที่ท่องเที่ยวและขอพร
+      สถานที่ท่องเที่ยวเชิงศรัทธา (สายมู) อุบลราชธานี
       </h1>
 
       {/* 🔍 กล่องค้นหา */}

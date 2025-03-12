@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent } from "../../DataContent";
+import { Datacontent, Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
@@ -12,10 +12,19 @@ import Card from "../../components/Card";
 export default function Rituals5() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
+  const displayedItems = [Datacontent[4].id];
 
   const clicklikes = () => {
     setLikes(!likes);
   };
+
+   useEffect(() => {
+      // โหลดสคริปต์ของ TikTok หลังจาก mount
+      const script = document.createElement("script");
+      script.src = "https://www.tiktok.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }, []);
 
   return (
     <>
@@ -39,9 +48,9 @@ export default function Rituals5() {
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
-                      src=""
-                      alt=""
-                      className="w-8 h-8 bg-gray-300 rounded-full "
+                      src={Image[0].img}
+                      alt={Image[0].title}
+                      className="w-8 h-8  rounded-full "
                     />
                     <p>UBRU</p>
                   </div>
@@ -62,11 +71,25 @@ export default function Rituals5() {
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <h1 className="text-2xl font-bold">คาถา บทสวด และคำบูชา</h1>
-              <p className="leading-relaxed whitespace-pre-line">{Datacontent[4].wish}</p>
+              <p className="leading-relaxed whitespace-pre-line">
+                {Datacontent[4].wish}
+              </p>
             </div>
             {/* social media */}
             <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
-              <h1>tags</h1>
+              <div className="flex gap-2 items-center">
+                {(Array.isArray(Datacontent[4].tagsmyth)
+                  ? Datacontent[4].tagsmyth
+                  : []
+                ).map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm  text-[10px] font-bold  "
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
               <button
                 onClick={clicklikes}
                 className="flex items-center gap-2 cursor-pointer"
@@ -82,15 +105,91 @@ export default function Rituals5() {
               </button>
             </div>
           </section>
+          {/* Tiktok */}
+          <section className="w-full flex justify-center">
+            <blockquote
+              class="tiktok-embed"
+              cite="https://www.tiktok.com/@ranee4242/video/7467165036352474376"
+              data-video-id="7467165036352474376"
+              style={{ maxWidth: "605px", minWidth: "325px" }}
+            >
+              {" "}
+              <section>
+                {" "}
+                <a
+                  target="_blank"
+                  title="@ranee4242"
+                  href="https://www.tiktok.com/@ranee4242?refer=embed"
+                >
+                  @ranee4242
+                </a>{" "}
+                <a
+                  title="ราณีมันตรา"
+                  target="_blank"
+                  href="https://www.tiktok.com/tag/%E0%B8%A3%E0%B8%B2%E0%B8%93%E0%B8%B5%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B2?refer=embed"
+                >
+                  #ราณีมันตรา
+                </a>{" "}
+                <a
+                  title="วัดป่าปากโดม"
+                  target="_blank"
+                  href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%82%E0%B8%94%E0%B8%A1?refer=embed"
+                >
+                  #วัดป่าปากโดม
+                </a>{" "}
+                <a
+                  title="วัดป่าปากโดมอุบลราชธานี"
+                  target="_blank"
+                  href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%82%E0%B8%94%E0%B8%A1%E0%B8%AD%E0%B8%B8%E0%B8%9A%E0%B8%A5%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5?refer=embed"
+                >
+                  #วัดป่าปากโดมอุบลราชธานี
+                </a>{" "}
+                <a
+                  title="องค์ทะนะมูลนาคราช"
+                  target="_blank"
+                  href="https://www.tiktok.com/tag/%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%97%E0%B8%B0%E0%B8%99%E0%B8%B0%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%99%E0%B8%B2%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%8A?refer=embed"
+                >
+                  #องค์ทะนะมูลนาคราช
+                </a>{" "}
+                <a
+                  title="องค์นาคราช"
+                  target="_blank"
+                  href="https://www.tiktok.com/tag/%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%99%E0%B8%B2%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%8A?refer=embed"
+                >
+                  #องค์นาคราช
+                </a>{" "}
+                <a
+                  target="_blank"
+                  title="♬ เสียงต้นฉบับ  - ราณีมันตราอ.ราณี"
+                  href="https://www.tiktok.com/music/เสียงต้นฉบับ-ราณีมันตราอราณี-7467165364728744705?refer=embed"
+                >
+                  ♬ เสียงต้นฉบับ - ราณีมันตราอ.ราณี
+                </a>{" "}
+              </section>
+            </blockquote>
+          </section>
         </div>
         <section className="mt-10 mb-10">
           {/* Additional Information */}
           <h1 className="text-center text-2xl font-bold py-3">เพิ่มเติม</h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
-            {Datacontent.slice(0, 3).map((item) => (
-              <Card key={item.id} {...item} />
-            ))}
-          </div>
+
+          {Datacontent.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
+              {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
+                .slice(2, 5) // ✅ เอาแค่ 3 รายการ
+                .map((item) => (
+                  <Link key={item.id} to={`/myth${item.id}`}>
+                    <Card {...item} />
+                  </Link>
+                ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-40">
+              <p className="text-gray-500 text-center">
+                ❌ ไม่มีข้อมูลเพิ่มเติม
+              </p>
+            </div>
+          )}
         </section>
       </div>
     </>
