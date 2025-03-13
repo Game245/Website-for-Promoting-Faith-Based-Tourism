@@ -1,4 +1,4 @@
-import TestOne from "./assets/images/Test One.jpg";
+import TestOne from "./assets/images/Test one.jpg";
 import TestTwo from "./assets/images/Test two.jpg";
 import TestThree from "./assets/images/Test three.jpg";
 import TestFour from "./assets/images/Test four.jpg";
