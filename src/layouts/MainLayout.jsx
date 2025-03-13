@@ -6,21 +6,7 @@ import { LoadingContext } from "../contexts/LoadingContext";
 import Loading from "../components/Loading";
 
 function MainLayout() {
-  const { loading, setLoading } = useContext(LoadingContext);
-  const location = useLocation(); 
-
-  useEffect(() => {
-    setLoading(true); 
-    const timer = setTimeout(() => {
-      setLoading(false); 
-    }, 15000); 
-
-    return () => clearTimeout(timer); 
-  }, [location.pathname]); 
-
-  return loading ? (
-    <Loading />
-  ) : (
+    return(
     <>
       <Navbar />
       <main>

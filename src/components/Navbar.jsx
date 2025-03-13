@@ -1,26 +1,58 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import LOGO from "../assets/images/LOGO.png";
 
 function Navbar() {
   const [Toggle, setToggle] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // เพิ่ม state สำหรับ dropdown
-  const openToggle = () => {
-    setToggle(!Toggle);
-  };
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  const openToggle = () => setToggle((prev) => !prev);
 
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen); // สลับสถานะของ dropdown
+    setDropdownOpen((prev) => !prev);
   };
+
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50);
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownOpen &&
+        !dropdownRef.current?.contains(event.target) &&
+        !buttonRef.current?.contains(event.target)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [dropdownOpen]);
 
   const ActiveLink = ({ children, to }) => (
     <NavLink
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "text-red-500 p-2  rounded-lg transition-colors duration-300 ease-in-out"
+          ? "text-red-500 p-2 rounded-lg transition-colors duration-300 ease-in-out"
           : "text-black hover:text-sky-500 hover:bg-gray-300 p-2 rounded-lg transition-colors duration-300 ease-in-out"
       }
     >
@@ -29,7 +61,11 @@ function Navbar() {
   );
 
   return (
-    <nav className="bg-zine-600 relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 bg-white/20 backdrop-blur-md">
+    <nav
+      className={`relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 ${
+        isScrolled ? "bg-white/60" : "bg-white/20"
+      } backdrop-blur-md`}
+    >
       <div className="container mx-auto max-w-7xl h-auto p-5 flex flex-col md:flex-row md:justify-between md:items-center md:h-[80px]">
         <Link to="/">
           <img
@@ -43,48 +79,35 @@ function Navbar() {
             !Toggle ? "hidden" : "flex"
           } flex flex-col my-8 md:flex md:flex-row md:bg-zine-600 rounded-lg p-2`}
         >
-          <li className="my-2 md:mx-4 hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
+          <li className="my-2 md:mx-4">
             <ActiveLink to="/">หน้าแรก</ActiveLink>
           </li>
 
-          <li className="md:inline-block relative group md:items-center p-2 md:p-0">
+          <li className="md:inline-block relative group md:items-center">
             <button
-              className="my-2 flex rounded-lg flex-row items-center hover:text-sky-500 hover:bg-gray-300 p-2 md:rounded-lg transition-colors duration-300 ease-in-out cursor-pointer"
-              onClick={toggleDropdown} // ใช้ปุ่มกดแทน hover
+              ref={buttonRef}
+              className="flex rounded-lg flex-row items-center hover:text-sky-500 hover:bg-gray-300 p-2 md:rounded-lg transition-colors duration-300 ease-in-out cursor-pointer"
+              onClick={toggleDropdown}
             >
               แนะนำ <IoMdArrowDropdown />
             </button>
-            {dropdownOpen && ( // แสดง dropdown เมื่อ dropdownOpen เป็น true
+            {dropdownOpen && (
               <div
                 id="dropdown"
+                ref={dropdownRef}
                 className="flex flex-col p-5 mx-2 min-w-[200px] md:absolute z-10 shadow-md bg-gray-100 rounded-lg"
               >
-                <ActiveLink
-                  to="/destinations"
-                  className="md:block my-2 mx-4 hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
-                >
-                  สถานที่ขอพร
-                </ActiveLink>
-                <ActiveLink
-                  to="/myth"
-                  className="md:block my-2 mx-4 hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
-                >
-                  ตำนานและความเชื่อ
-                </ActiveLink>
-                <ActiveLink
-                  to="/rituals"
-                  className="md:block my-2 mx-4 hover:bg-gray-300 p-4 rounded-lg transition-colors duration-300 ease-in-out"
-                >
-                  วิธีการไหว้และพิธีกรรม
-                </ActiveLink>
+                <ActiveLink to="/destinations">สถานที่ขอพร</ActiveLink>
+                <ActiveLink to="/myth">ตำนานและความเชื่อ</ActiveLink>
+                <ActiveLink to="/rituals">วิธีการไหว้และพิธีกรรม</ActiveLink>
               </div>
             )}
           </li>
 
-          <li className="my-2 md:mx-4 hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
+          <li className="my-2 md:mx-4">
             <ActiveLink to="/about">เกี่ยวกับเรา</ActiveLink>
           </li>
-          <li className="my-2 md:mx-4 hover:bg-gray-300 md:hover:bg-transparent p-2 rounded-lg transition-colors duration-300 ease-in-out">
+          <li className="my-2 md:mx-4">
             <ActiveLink to="/contact">ติดต่อเรา</ActiveLink>
           </li>
         </ul>

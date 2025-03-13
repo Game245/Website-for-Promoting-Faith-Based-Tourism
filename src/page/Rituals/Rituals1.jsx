@@ -1,5 +1,4 @@
-import React, { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
@@ -8,49 +7,78 @@ import { Datacontent, Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // เพิ่มการ import motion
 
 export default function Rituals1() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
-  const displayedItems = [Datacontent[0].id];
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const clicklikes = () => {
     setLikes(!likes);
   };
+  const displayedItems = [Datacontent[0].id];
+  // ฟังก์ชันเพื่อให้เสียงอ่าน
+  const readAloud = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "th-TH"; // เลือกภาษาภาษาไทย
+
+    if (isPlaying) {
+      // Pause speech if it's playing
+      speechSynthesis.pause();
+      setIsPlaying(false);
+    } else {
+      // Cancel any ongoing speech and start a new utterance
+      speechSynthesis.cancel(); // ล้างการพูดก่อนหน้า
+      speechSynthesis.speak(utterance); // เริ่มการอ่านใหม่
+      setIsPlaying(true);
+
+      // Update state when speech ends
+      utterance.onend = () => {
+        setIsPlaying(false);
+      };
+    }
+  };
 
   useEffect(() => {
-        // โหลดสคริปต์ของ TikTok หลังจาก mount
-        const script = document.createElement("script");
-        script.src = "https://www.tiktok.com/embed.js";
-        script.async = true;
-        document.body.appendChild(script);
-      }, []);
-  
+    // โหลดสคริปต์ของ TikTok หลังจาก mount
+    const script = document.createElement("script");
+    script.src = "https://www.tiktok.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <>
-      <div className="container mx-auto  p-4  w-full">
+      <div className="container mx-auto p-4 w-full">
         {/* button กลับ */}
         <Link
           to="/rituals"
-          className="flex justify-between gap-2 items-center mb-3 "
+          className="flex justify-between gap-2 items-center mb-3"
         >
-          <div className="flex gap-2 items-center p-2  cursor-pointer bg-black text-white rounded-lg hover:bg-gray-600">
-            <RiArrowGoBackFill className="text-3xl " />
+          <div className="flex gap-2 items-center p-2 cursor-pointer bg-black text-white rounded-lg hover:bg-gray-600">
+            <RiArrowGoBackFill className="text-3xl" />
             <p className="font-bold">ย้อนกลับ</p>
           </div>
           <div></div>
         </Link>
+
         {/* กล่อง */}
         <div className="max-w-screen mx-auto px-6 md:px-20 py-10 md:py-20 border bg-white shadow-lg rounded-lg">
           <section>
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex justify-between font-bold items-center">
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
                     <img
                       src={Image[0].img}
                       alt={Image[0].title}
-                      className="w-8 h-8 rounded-full "
+                      className="w-8 h-8 rounded-full"
                     />
                     <p>UBRU</p>
                   </div>
@@ -62,23 +90,56 @@ export default function Rituals1() {
                 </div>
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
-                <h1 className="font-bold text-4xl md:text-[80px] leading-tight  mb-1">
+                <motion.h1
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
+                  animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
+                  transition={{ duration: 0.6 }} // ระยะเวลา
+                >
                   {Datacontent[0].title}
-                </h1>
+                </motion.h1>
               </div>
-            </div>
+            </motion.div>
+
             {/* หัวข้อ */}
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <h1 className="text-2xl font-bold">
                 คาถาบูชาพระเจ้าใหญ่อินทร์แปง
               </h1>
-              <p className="leading-relaxed  whitespace-pre-line">
+              <motion.p
+                className="leading-relaxed whitespace-pre-line"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
                 {Datacontent[0].wish}
-              </p>
+              </motion.p>
             </div>
+
+            {/* ปุ่มเสียง */}
+            <motion.div
+              className="flex justify-center m-10"
+              initial={{ opacity: 0 }} // เริ่มที่ opacity 0
+              animate={{ opacity: 1 }} // ทำให้ opacity = 1
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <button
+                onClick={() => readAloud(Datacontent[0].wish)} // คลิกแล้วให้เสียงอ่านข้อความ
+                className="bg-sky-500 text-white px-6 py-3  hover:bg-sky-600 transition-all rounded-full cursor-pointer"
+              >
+                {isPlaying ? "หยุดอ่าน" : "อ่านบทสวด"}
+              </button>
+            </motion.div>
+
             {/* social media */}
-            <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
+            <motion.div
+              className="border-b border-gray-300 border-t py-2 flex justify-between items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="flex gap-2 items-center">
                 {(Array.isArray(Datacontent[0].tagsmyth)
                   ? Datacontent[0].tagsmyth
@@ -86,7 +147,7 @@ export default function Rituals1() {
                 ).map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm  text-[10px] font-bold  "
+                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm text-[10px] font-bold"
                   >
                     {tag}
                   </span>
@@ -105,79 +166,10 @@ export default function Rituals1() {
                   {likes ? "คุณถูกใจสิ่งนี้!" : "กดไลก์"}
                 </span>
               </button>
-            </div>
-          </section>
-          <section className="w-full flex justify-center">
-            <blockquote
-              class="tiktok-embed"
-              cite="https://www.tiktok.com/@eves_ubon/video/7190701732194831642"
-              data-video-id="7190701732194831642"
-              style={{ maxWidth: "605px", minWidth: "325px" }}
-            >
-              {" "}
-              <section>
-                {" "}
-                <a
-                  target="_blank"
-                  title="@eves_ubon"
-                  href="https://www.tiktok.com/@eves_ubon?refer=embed"
-                >
-                  @eves_ubon
-                </a>{" "}
-                พาน้องปัณปัณ ไหว้พระขอพร ครบ 1 ขวบ{" "}
-                <a
-                  title="น้องปัณปัณลูกแม่ค้าขายอีฟส์"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/%E0%B8%99%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%B1%E0%B8%93%E0%B8%9B%E0%B8%B1%E0%B8%93%E0%B8%A5%E0%B8%B9%E0%B8%81%E0%B9%81%E0%B8%A1%E0%B9%88%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AD%E0%B8%B5%E0%B8%9F%E0%B8%AA%E0%B9%8C?refer=embed"
-                >
-                  #น้องปัณปัณลูกแม่ค้าขายอีฟส์
-                </a>{" "}
-                <a
-                  title="อีฟส์อุบล"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/%E0%B8%AD%E0%B8%B5%E0%B8%9F%E0%B8%AA%E0%B9%8C%E0%B8%AD%E0%B8%B8%E0%B8%9A%E0%B8%A5?refer=embed"
-                >
-                  #อีฟส์อุบล
-                </a>{" "}
-                <a
-                  title="eves"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/eves?refer=embed"
-                >
-                  #eves
-                </a>{" "}
-                <a
-                  title="evesubon"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/evesubon?refer=embed"
-                >
-                  #evesubon
-                </a>{" "}
-                <a
-                  title="วัดป่าใหญ่จังหวัดอุบลฯ"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AD%E0%B8%B8%E0%B8%9A%E0%B8%A5%E0%B8%AF?refer=embed"
-                >
-                  #วัดป่าใหญ่จังหวัดอุบลฯ
-                </a>{" "}
-                <a
-                  title="ท้าวเวสสุวรรณวัดป่าใหญ่อุบลฯ"
-                  target="_blank"
-                  href="https://www.tiktok.com/tag/%E0%B8%97%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%A7%E0%B8%AA%E0%B8%AA%E0%B8%B8%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%E0%B8%AD%E0%B8%B8%E0%B8%9A%E0%B8%A5%E0%B8%AF?refer=embed"
-                >
-                  #ท้าวเวสสุวรรณวัดป่าใหญ่อุบลฯ
-                </a>{" "}
-                <a
-                  target="_blank"
-                  title="♬ Aesthetic - Tollan Kim"
-                  href="https://www.tiktok.com/music/Aesthetic-7072513628145977346?refer=embed"
-                >
-                  ♬ Aesthetic - Tollan Kim
-                </a>{" "}
-              </section>
-            </blockquote>
+            </motion.div>
           </section>
         </div>
+
         <section className="mt-10 mb-10">
           {/* Additional Information */}
           <h1 className="text-center text-2xl font-bold py-3">เพิ่มเติม</h1>
@@ -187,8 +179,18 @@ export default function Rituals1() {
               {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
                 .slice(0, 3) // ✅ เอาแค่ 3 รายการ
                 .map((item) => (
-                  <Link key={item.id} to={`/myth${item.id}`}>
-                    <Card {...item} />
+                  <Link
+                    key={item.id}
+                    to={`/rituals${item.id}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }} // เริ่มที่ opacity 0 และ ขนาดเล็ก
+                      animate={{ opacity: 1, scale: 1 }} // เมื่อโหลดแล้วจะมี opacity 1 และขยายขนาด
+                      transition={{ duration: 0.6 }} // ระยะเวลา
+                    >
+                      <Card {...item} />
+                    </motion.div>
                   </Link>
                 ))}
             </div>

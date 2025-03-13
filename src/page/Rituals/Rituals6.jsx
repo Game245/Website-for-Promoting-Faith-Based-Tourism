@@ -4,15 +4,38 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent,Image } from "../../DataContent";
+import { Datacontent, Image } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
+import { motion } from "framer-motion";
 
 export default function Rituals6() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const displayedItems = [Datacontent[5].id];
+  // ฟังก์ชันเพื่อให้เสียงอ่าน
+  const readAloud = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "th-TH"; // เลือกภาษาภาษาไทย
+
+    if (isPlaying) {
+      // Pause speech if it's playing
+      speechSynthesis.pause();
+      setIsPlaying(false);
+    } else {
+      // Cancel any ongoing speech and start a new utterance
+      speechSynthesis.cancel(); // ล้างการพูดก่อนหน้า
+      speechSynthesis.speak(utterance); // เริ่มการอ่านใหม่
+      setIsPlaying(true);
+
+      // Update state when speech ends
+      utterance.onend = () => {
+        setIsPlaying(false);
+      };
+    }
+  };
 
   useEffect(() => {
     // โหลดสคริปต์ของ TikTok หลังจาก mount
@@ -43,7 +66,11 @@ export default function Rituals6() {
         {/* กล่อง */}
         <div className="max-w-screen mx-auto px-6 md:px-20 py-10 md:py-20 border bg-white shadow-lg rounded-lg">
           <section>
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex justify-between font-bold items-center">
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
@@ -62,21 +89,51 @@ export default function Rituals6() {
                 </div>
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
-                <h1 className="font-bold text-4xl md:text-[80px] leading-tight  mb-1">
+                <motion.h1
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
+                  animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
+                  transition={{ duration: 0.6 }} // ระยะเวลา
+                >
                   {Datacontent[5].title}
-                </h1>
+                </motion.h1>
               </div>
-            </div>
+            </motion.div>
             {/* หัวข้อ */}
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <h1 className="text-2xl font-bold"></h1>
-              <p className="leading-relaxed whitespace-pre-line">
+              <motion.p
+                className="leading-relaxed whitespace-pre-line"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
                 {Datacontent[5].wish}
-              </p>
+              </motion.p>
             </div>
+            {/* ปุ่มเสียง */}
+            <motion.div
+              className="flex justify-center m-10"
+              initial={{ opacity: 0 }} // เริ่มที่ opacity 0
+              animate={{ opacity: 1 }} // ทำให้ opacity = 1
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <button
+                onClick={() => readAloud(Datacontent[0].wish)} // คลิกแล้วให้เสียงอ่านข้อความ
+                className="bg-sky-500 text-white px-6 py-3  hover:bg-sky-600 transition-all rounded-full cursor-pointer"
+              >
+                {isPlaying ? "หยุดอ่าน" : "อ่านบทสวด"}
+              </button>
+            </motion.div>
             {/* social media */}
-            <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
+            <motion.div
+              className="border-b border-gray-300 border-t py-2 flex justify-between items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="flex gap-2 items-center">
                 {(Array.isArray(Datacontent[5].tagsmyth)
                   ? Datacontent[5].tagsmyth
@@ -103,7 +160,7 @@ export default function Rituals6() {
                   {likes ? "คุณถูกใจสิ่งนี้!" : "กดไลก์"}
                 </span>
               </button>
-            </div>
+            </motion.div>
           </section>
           {/* TikTok Embed */}
           <section className="w-full flex justify-center">
@@ -160,7 +217,11 @@ export default function Rituals6() {
               {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
                 .slice(2, 5) // ✅ เอาแค่ 3 รายการ
                 .map((item) => (
-                  <Link key={item.id} to={`/myth${item.id}`}>
+                  <Link
+                    key={item.id}
+                    to={`/rituals${item.id}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     <Card {...item} />
                   </Link>
                 ))}

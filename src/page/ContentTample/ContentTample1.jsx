@@ -94,18 +94,7 @@ export default function ContentTample1() {
                 </h1>
               </div>
             </div>
-            {/* YouTube Video */}
-            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
-              <div className="flex justify-center">
-                <iframe
-                  className="w-full md:h-96 h-64 rounded-lg"
-                  src={Datacontent[0].youtube}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
+            
             {/* slide */}
             <div className="flex justify-center mt-6">
               <a
@@ -130,6 +119,7 @@ export default function ContentTample1() {
                 {Datacontent[0].history}
               </p>
             </div>
+            
             {/* social media */}
             <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
               <div className="flex gap-2 items-center">
@@ -160,7 +150,18 @@ export default function ContentTample1() {
                 </span>
               </button>
             </div>
-
+                {/* YouTube Video */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
+              <div className="flex justify-center">
+                <iframe
+                  className="w-full md:h-96 h-64 rounded-lg"
+                  src={Datacontent[0].youtube}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
             <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
               <div className="text-4xl font-bold text-center mb-5 flex justify-center items-center">
                 <FaMapLocationDot className="inline-block mr-2" />

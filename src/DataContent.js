@@ -1,15 +1,9 @@
-import TestOne from "./assets/images/Test one.jpg";
-import TestTwo from "./assets/images/Test two.jpg";
-import TestThree from "./assets/images/Test three.jpg";
-import TestFour from "./assets/images/Test four.jpg";
-import TestFive from "./assets/images/Test five.jpg";
-import TestSix from "./assets/images/Test six.jpg";
 import SRPN from "./assets/images/SRPN.jpg";
 import MHNR from "./assets/images/MHNR.jpg";
 import HB from "./assets/images/HB.jpg";
 import TSM from "./assets/images/TSM.jpg";
-import PPD from "./assets/images/PPD.jpg";
 import PPN from "./assets/images/PPN.jpg";
+import PPD1 from "./assets/images/PPD1.jpg";
 import LOGO from "./assets/images/LOGO.png";
 
 export const Image = [
@@ -227,7 +221,7 @@ export const Datacontent = [
   },
   {
     id: 5,
-    img: PPD,
+    img: PPD1,
     title: "วัดปากโดมเทพนิมิต (วัดป่าปากโดม)",
     youtube: "https://www.youtube.com/embed/-ypVFvTbcCw?si=r5l60axnlqAjikR",
     tagsmyth: ["ความเชื่อ"],
