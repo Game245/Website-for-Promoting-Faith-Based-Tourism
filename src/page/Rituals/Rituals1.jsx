@@ -3,17 +3,20 @@ import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent, Image } from "../../DataContent";
+import { Datacontent, Image, activities, amuletData } from "../../DataContent";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; // เพิ่มการ import motion
+import { FaHome, FaTimes } from "react-icons/fa";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 export default function Rituals1() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showPopup, setShowPopup] = useState(null); // null = ไม่แสดง popup
 
   const clicklikes = () => {
     setLikes(!likes);
@@ -49,21 +52,46 @@ export default function Rituals1() {
     document.body.appendChild(script);
   }, []);
 
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    if (Datacontent.length > 0) {
+      setContent(Datacontent[0]);
+    }
+  }, []);
+
+  if (!content)
+    return (
+      <div className="h-screen w-full flex justify-center items-center bg-gray-100">
+        <p className="text-center text-gray-500 text-2xl font-semibold animate-pulse">
+          กำลังโหลด...
+        </p>
+      </div>
+    );
+
   return (
     <>
-      <div className="container mx-auto p-4 w-full">
-        {/* button กลับ */}
-        <Link
-          to="/rituals"
-          className="flex justify-between gap-2 items-center mb-3"
-        >
-          <div className="flex gap-2 items-center p-2 cursor-pointer bg-black text-white rounded-lg hover:bg-gray-600">
-            <RiArrowGoBackFill className="text-3xl" />
-            <p className="font-bold">ย้อนกลับ</p>
-          </div>
-          <div></div>
-        </Link>
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 py-3 text-gray-600 overflow-x-auto whitespace-nowrap">
+        <nav className="flex items-center gap-2 md:text-sm text-[8px]">
+          <Link
+            to="/"
+            className="flex items-center gap-1 text-blue-500 font-medium hover:underline hover:text-blue-300"
+          >
+            <FaHome /> หน้าแรก
+          </Link>
+          <span className="text-gray-400">›</span>
+          <Link to="/rituals">
+            <span className="text-gray-800 hover:underline hover:text-blue-400">
+              วิธีการไหว้และพิธีกรรม
+            </span>
+          </Link>
 
+          <span className="text-gray-400">››</span>
+          <span className="text-gray-800">{content.title}</span>
+        </nav>
+      </div>
+      <div className="container mx-auto p-4 w-full">
         {/* กล่อง */}
         <div className="max-w-screen mx-auto px-6 md:px-20 py-10 md:py-20 border bg-white shadow-lg rounded-lg">
           <section>
@@ -117,22 +145,116 @@ export default function Rituals1() {
               </motion.p>
             </div>
 
-            {/* ปุ่มเสียง */}
-            <motion.div
-              className="flex justify-center m-10"
-              initial={{ opacity: 0 }} // เริ่มที่ opacity 0
-              animate={{ opacity: 1 }} // ทำให้ opacity = 1
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              <button
-                onClick={() => readAloud(Datacontent[0].wish)} // คลิกแล้วให้เสียงอ่านข้อความ
-                className="bg-sky-500 text-white px-6 py-3  hover:bg-sky-600 transition-all rounded-full cursor-pointer"
+            {/* ปุ่มเปิดป๊อบอัพ */}
+            <div className="flex justify-end md:gap-4 gap-2 mt-5 mb-5">
+              {/* ปุ่มเสียง */}
+              <motion.button
+                onClick={() => readAloud(Datacontent[0].wish)}
+                className={`${
+                  isPlaying
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-green-500 hover:bg-blue-600"
+                } text-white md:px-3 md:py-2 px-3 py-2 rounded-lg transition-all cursor-pointer text-[10px] md:text-[12px] flex items-center justify-center gap-2`}
+                initial={{ opacity: 0, scale: 0.95 }} // เริ่มที่ opacity 0 และขนาดเล็ก
+                animate={{ opacity: 1, scale: 1 }} // ขนาดปกติและ opacity = 1
+                transition={{ duration: 0.45 }}
+                whileHover={{ scale: 1.05 }} // ขยายขนาดเมื่อ hover
               >
-                {isPlaying ? "หยุดอ่าน" : "อ่านบทสวด"}
-              </button>
-            </motion.div>
+                {/* แสดงไอคอนเสียง VolumeUp หรือ VolumeMute ตามสถานะของ isPlaying */}
+                {isPlaying ? (
+                  <>
+                    <FaVolumeMute className="text-white" /> หยุดเสียง
+                  </>
+                ) : (
+                  <>
+                    <FaVolumeUp className="text-white" /> เล่นเสียง
+                  </>
+                )}
+              </motion.button>
 
+              {/* ปุ่มกิจกรรม */}
+              <motion.button
+                className="bg-blue-500 text-white md:px-3 md:py-2 px-3 py-2 rounded-lg hover:bg-blue-600 transition-all cursor-pointer text-[10px] md:text-[12px]"
+                onClick={() => setShowPopup("activities")}
+                initial={{ opacity: 0, scale: 0.95 }} // เริ่มที่ opacity 0 และขนาดเล็ก
+                animate={{ opacity: 1, scale: 1 }} // ขนาดปกติและ opacity = 1
+                transition={{ duration: 0.45 }}
+                whileHover={{ scale: 1.05 }} // ขยายขนาดเมื่อ hover
+              >
+                กิจกรรม
+              </motion.button>
+
+              {/* ปุ่มวัตถุมงคล */}
+              <motion.button
+                className="bg-yellow-500 text-white md:px-3 md:py-2 px-3 py-2 rounded-lg hover:bg-green-600 transition-all cursor-pointer text-[10px] md:text-[12px]"
+                onClick={() => setShowPopup("amulet")}
+                initial={{ opacity: 0, scale: 0.95 }} // เริ่มที่ opacity 0 และขนาดเล็ก
+                animate={{ opacity: 1, scale: 1 }} // ขนาดปกติและ opacity = 1
+                transition={{ duration: 0.45 }}
+                whileHover={{ scale: 1.05 }} // ขยายขนาดเมื่อ hover
+              >
+                วัตถุมงคล
+              </motion.button>
+            </div>
+
+            {/* 🏆 ป๊อบอัพกิจกรรม */}
+            {showPopup === "activities" && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm bg-black/30"
+              >
+                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-bold">📅 กิจกรรมปี 68</h2>
+                    <FaTimes
+                      className="cursor-pointer text-red-500"
+                      onClick={() => setShowPopup(null)}
+                    />
+                  </div>
+                  <ul className="mt-4 text-gray-700">
+                    {activities.map((event, index) => (
+                      <li key={index} className="mb-2">
+                        ✅ {event}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+
+            {/* 🏺 ป๊อบอัพวัตถุมงคล */}
+            {showPopup === "amulet" && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm bg-black/30 px-5"
+              >
+                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-bold">🏺 {amuletData.name}</h2>
+                    <FaTimes
+                      className="cursor-pointer text-red-500"
+                      onClick={() => setShowPopup(null)}
+                    />
+                  </div>
+                  <img
+                    src={amuletData.image}
+                    alt={amuletData.name}
+                    className="w-full h-40 object-cover rounded-md mt-2"
+                  />
+                  <p className="text-gray-700 mt-2">{amuletData.description}</p>
+                  <p className="text-gray-900 font-bold mt-2">
+                    💰 ราคา: {amuletData.price}
+                  </p>
+                  <p className="text-gray-700 mt-2">
+                    🙏 วิธีบูชา: {amuletData.howToWorship}
+                  </p>
+                </div>
+              </motion.div>
+            )}
             {/* social media */}
             <motion.div
               className="border-b border-gray-300 border-t py-2 flex justify-between items-center"
@@ -176,8 +298,10 @@ export default function Rituals1() {
 
           {Datacontent.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
-              {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
-                .slice(0, 3) // ✅ เอาแค่ 3 รายการ
+              {Datacontent.filter((item) => !displayedItems.includes(item.id))
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3)
+                // ✅ เอาแค่ 3 รายการ
                 .map((item) => (
                   <Link
                     key={item.id}

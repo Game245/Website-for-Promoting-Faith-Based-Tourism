@@ -11,12 +11,12 @@ import Card from "../../components/Card";
 import { FaHome } from "react-icons/fa";
 import { motion } from "framer-motion"; // เพิ่มการ import motion
 
-export default function Myth5() {
+export default function Myth9() {
   const currentDate = new Date().toLocaleDateString("th-TH");
 
   const [likes, setLikes] = useState(false);
 
-  const displayedItems = [Datacontent[4].id];
+  const displayedItems = [Datacontent[5].id];
 
   const clicklikes = () => {
     setLikes(!likes);
@@ -24,8 +24,8 @@ export default function Myth5() {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    if (Datacontent.length > 4) {
-      setContent(Datacontent[4]);
+    if (Datacontent.length > 8) {
+      setContent(Datacontent[8]);
     }
   }, []);
 
@@ -88,12 +88,12 @@ export default function Myth5() {
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
                 <motion.h1
-                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-10"
                   initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
                   animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
                   transition={{ duration: 0.6 }} // ระยะเวลา
                 >
-                  {Datacontent[4].title}
+                  {Datacontent[8].title}
                 </motion.h1>
               </div>
             </motion.div>
@@ -107,7 +107,7 @@ export default function Myth5() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                {Datacontent[4].myth}
+                {Datacontent[8].myth}
               </motion.p>
             </div>
             {/* social media */}
@@ -118,8 +118,8 @@ export default function Myth5() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex gap-2 items-center">
-                {(Array.isArray(Datacontent[4].tagsmyth)
-                  ? Datacontent[4].tagsmyth
+                {(Array.isArray(Datacontent[8].tagsmyth)
+                  ? Datacontent[8].tagsmyth
                   : []
                 ).map((tag) => (
                   <span

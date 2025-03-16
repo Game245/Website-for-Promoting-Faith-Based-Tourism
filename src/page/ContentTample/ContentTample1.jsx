@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Comment from "../../components/Comment";
-import { Datacontent,Image } from "../../DataContent";
+import { Datacontent, Image } from "../../DataContent";
 import Card from "../../components/Card";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { motion } from "framer-motion"; // เพิ่มการ import motion
 
 export default function ContentTample1() {
   const currentDate = new Date().toLocaleDateString("th-TH");
@@ -19,6 +21,23 @@ export default function ContentTample1() {
   const clicklikes = () => {
     setLikes(!likes);
   };
+
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    if (Datacontent.length > 0) {
+      setContent(Datacontent[0]);
+    }
+  }, []);
+
+  if (!content)
+    return (
+      <div className="h-screen w-full flex justify-center items-center bg-gray-100">
+        <p className="text-center text-gray-500 text-2xl font-semibold animate-pulse">
+          กำลังโหลด...
+        </p>
+      </div>
+    );
 
   // ฟังก์ชันแชร์
   const shareContent = () => {
@@ -54,22 +73,35 @@ export default function ContentTample1() {
   };
   return (
     <>
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 py-3 text-gray-600 overflow-x-auto whitespace-nowrap">
+        <nav className="flex items-center gap-2 md:text-sm text-[8px]">
+          <Link
+            to="/"
+            className="flex items-center gap-1 text-blue-500 font-medium hover:underline hover:text-blue-300"
+          >
+            <FaHome /> หน้าแรก
+          </Link>
+          <span className="text-gray-400">›</span>
+          <Link to="/destinations">
+            <span className="text-gray-800 hover:underline hover:text-blue-400">
+              สถานที่ท่องเที่ยวเชิงศรัทธา (สายมู) อุบลราชธานี
+            </span>
+          </Link>
+
+          <span className="text-gray-400">››</span>
+          <span className="text-gray-800">{content.title}</span>
+        </nav>
+      </div>
       <div className="container mx-auto  p-4  w-full">
-        {/* button กลับ */}
-        <Link
-          to="/destinations"
-          className="flex justify-between gap-2 items-center mb-3 "
-        >
-          <div className="flex gap-2 items-center p-2  cursor-pointer bg-black text-white rounded-lg hover:bg-gray-600">
-            <RiArrowGoBackFill className="text-3xl " />
-            <p className="font-bold">ย้อนกลับ</p>
-          </div>
-          <div></div>
-        </Link>
         {/* กล่อง */}
         <div className="max-w-screen mx-auto px-6 md:px-20 py-10 md:py-20 border bg-white shadow-lg rounded-lg">
           <section>
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex justify-between font-bold items-center">
                 <div className="flex gap-1 items-center">
                   <div className="flex items-center gap-2">
@@ -85,16 +117,24 @@ export default function ContentTample1() {
                 </div>
                 {/* button แชร์ */}
                 <div>
-                  <IoIosShareAlt className="text-3xl cursor-pointer" onClick={shareContent} />
+                  <IoIosShareAlt
+                    className="text-3xl cursor-pointer"
+                    onClick={shareContent}
+                  />
                 </div>
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
-                <h1 className="font-bold text-4xl md:text-[80px] leading-tight  mb-1">
+                <motion.h1
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
+                  animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
+                  transition={{ duration: 0.6 }} // ระยะเวลา
+                >
                   {Datacontent[0].title}
-                </h1>
+                </motion.h1>
               </div>
-            </div>
-            
+            </motion.div>
+
             {/* slide */}
             <div className="flex justify-center mt-6">
               <a
@@ -105,7 +145,7 @@ export default function ContentTample1() {
                 <img
                   src={Datacontent[0].img}
                   alt={Datacontent[0].title}
-                  className="w-full h-auto  rounded-lg  object-cover"
+                  className="md:w-full h-auto w-[600px]  rounded-lg  object-cover"
                 />
               </a>
             </div>
@@ -115,13 +155,23 @@ export default function ContentTample1() {
                 {Datacontent[0].recommend}
               </p>
               <h1 className="text-2xl font-bold mt-6">ประวัติ</h1>
-              <p className="leading-relaxed  whitespace-pre-line">
+              <motion.p
+                className="leading-relaxed whitespace-pre-line"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
                 {Datacontent[0].history}
-              </p>
+              </motion.p>
             </div>
-            
+
             {/* social media */}
-            <div className="border-b border-gray-300 border-t py-2 flex justify-between items-cente">
+            <motion.div
+              className="border-b border-gray-300 border-t py-2 flex justify-between items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="flex gap-2 items-center">
                 {(Array.isArray(Datacontent[0].tagsdestinations)
                   ? Datacontent[0].tagsdestinations
@@ -149,8 +199,8 @@ export default function ContentTample1() {
                   {likes ? "คุณถูกใจสิ่งนี้!" : "กดไลก์"}
                 </span>
               </button>
-            </div>
-                {/* YouTube Video */}
+            </motion.div>
+            {/* YouTube Video */}
             <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
               <div className="flex justify-center">
                 <iframe
@@ -181,11 +231,19 @@ export default function ContentTample1() {
 
           {Datacontent.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-auto justify-items-center">
-              {Datacontent.filter((item) => !displayedItems.includes(item.id)) // ❌ ไม่แสดงรายการซ้ำ
-                .slice(0, 3) // ✅ เอาแค่ 3 รายการ
+              {Datacontent.filter((item) => !displayedItems.includes(item.id))
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3)
+                // ✅ เอาแค่ 3 รายการ
                 .map((item) => (
                   <Link key={item.id} to={`/contenttample${item.id}`}>
-                    <Card {...item} />
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }} // เริ่มที่ opacity 0 และ ขนาดเล็ก
+                      animate={{ opacity: 1, scale: 1 }} // เมื่อโหลดแล้วจะมี opacity 1 และขยายขนาด
+                      transition={{ duration: 0.6 }} // ระยะเวลา
+                    >
+                      <Card {...item} />
+                    </motion.div>
                   </Link>
                 ))}
             </div>
@@ -201,5 +259,3 @@ export default function ContentTample1() {
     </>
   );
 }
-
-

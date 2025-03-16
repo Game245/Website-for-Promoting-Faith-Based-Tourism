@@ -36,7 +36,7 @@ function Footer() {
           ตั้งอยู่ที่เลขที่ 2 ถนนราชธานี ตำบลในเมือง อำเภอเมือง จังหวัดอุบลราชธานี 34000
         </p>
         <p>
-          เว็บไซต์: <a href="https://IND-TECH.UBRU.AC.TH" className="underline">IND-TECH.UBRU.AC.TH</a>
+          เว็บไซต์: <a href="https://IND-TECH.UBRU.AC.TH" className="hover:underline hover:text-red-600 ">IND-TECH.UBRU.AC.TH</a>
         </p>
         <p>
           ติดต่อคณะฯ โทร: 045-352000 ต่อ 1700 | โทรสาร: 045-352088

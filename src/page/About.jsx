@@ -7,6 +7,8 @@ import yosita from "../assets/images/Yosita.png";
 import tana from "../assets/images/Tana.png";
 import wixa from "../assets/images/Wixa.png";
 import devid from "../assets/images/Devid.png";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function About() {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -22,6 +24,21 @@ export default function About() {
 
   return (
     <>
+    {/* Breadcrumb */}
+          <div className="container mx-auto px-4 py-3 text-gray-600">
+            <nav className="flex items-center gap-2 md:text-sm text-[12px]">
+              <Link
+                to="/"
+                className="flex items-center gap-1 text-blue-500 font-medium hover:underline hover:text-blue-300"
+              >
+                <FaHome /> หน้าแรก
+              </Link>
+              <span className="text-gray-400">›</span>
+              <span className="text-gray-800">
+              เกี่ยวกับเรา
+              </span>
+            </nav>
+          </div>
       {/* ส่วนแนะนำเกี่ยวกับเรา */}
       <motion.div
         className="container flex flex-col items-center justify-center mx-auto p-6 text-center"

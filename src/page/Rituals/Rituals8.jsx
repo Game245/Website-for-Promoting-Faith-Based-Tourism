@@ -12,11 +12,11 @@ import { motion } from "framer-motion";
 import { FaHome, FaTimes } from "react-icons/fa";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
-export default function Rituals3() {
+export default function Rituals8() {
   const currentDate = new Date().toLocaleDateString("th-TH");
   const [likes, setLikes] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const displayedItems = [Datacontent[2].id];
+  const displayedItems = [Datacontent[5].id];
   // ฟังก์ชันเพื่อให้เสียงอ่าน
   const [showPopup, setShowPopup] = useState(null); // null = ไม่แสดง popup
   const readAloud = (text) => {
@@ -47,8 +47,8 @@ export default function Rituals3() {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    if (Datacontent.length > 2) {
-      setContent(Datacontent[2]);
+    if (Datacontent.length > 7) {
+      setContent(Datacontent[7]);
     }
   }, []);
 
@@ -98,7 +98,7 @@ export default function Rituals3() {
                     <img
                       src={Image[0].img}
                       alt={Image[0].title}
-                      className="w-8 h-8  rounded-full "
+                      className="w-8 h-8 rounded-full "
                     />
                     <p>UBRU</p>
                   </div>
@@ -111,36 +111,33 @@ export default function Rituals3() {
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
                 <motion.h1
-                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-10"
                   initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
                   animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
                   transition={{ duration: 0.6 }} // ระยะเวลา
                 >
-                  {Datacontent[2].title}
+                  {Datacontent[7].title}
                 </motion.h1>
               </div>
             </motion.div>
             {/* หัวข้อ */}
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
-              <h1 className="text-2xl font-bold">
-                คาถาบูชาพระเจ้าใหญ่อินทร์แปง
-              </h1>
+              <h1 className="text-2xl font-bold"></h1>
               <motion.p
                 className="leading-relaxed whitespace-pre-line"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                {Datacontent[2].wish}
+                {Datacontent[7].wish}
               </motion.p>
             </div>
-
             {/* ปุ่มเปิดป๊อบอัพ */}
             <div className="flex justify-end md:gap-4 gap-2 mt-5 mb-5">
               {/* ปุ่มเสียง */}
               <motion.button
-                onClick={() => readAloud(Datacontent[0].wish)}
+                onClick={() => readAloud(Datacontent[7].wish)}
                 className={`${
                   isPlaying
                     ? "bg-red-500 hover:bg-red-600"
@@ -254,8 +251,8 @@ export default function Rituals3() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex gap-2 items-center">
-                {(Array.isArray(Datacontent[2].tagsmyth)
-                  ? Datacontent[2].tagsmyth
+                {(Array.isArray(Datacontent[7].tagsmyth)
+                  ? Datacontent[7].tagsmyth
                   : []
                 ).map((tag) => (
                   <span

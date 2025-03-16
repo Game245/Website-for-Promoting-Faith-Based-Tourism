@@ -30,6 +30,7 @@ function Navbar() {
 
   useEffect(() => {
     setDropdownOpen(false);
+    window.scrollTo(0, 0); // Scroll to the top when route changes
   }, [location.pathname]);
 
   useEffect(() => {

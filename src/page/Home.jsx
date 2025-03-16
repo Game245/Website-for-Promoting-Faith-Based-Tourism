@@ -73,14 +73,14 @@ export default function Home() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] max-w-full object-cover rounded-lg shadow-lg"
+                  className=" h-[280px] md:w-auto md:h-[500px] max-w-full object-cover rounded-lg shadow-lg cursor-pointer"
                 />
               </motion.div>
               <div className="flex flex-col justify-center self-center md:items-start items-center max-w-lg gap-4">
                 <h1 className="font-bold text-3xl md:text-5xl text-center md:text-left">
                   {item.title}
                 </h1>
-                <p className="text-lg text-center md:text-left text-gray-700 leading-relaxed">
+                <p className="text-lg text-center md:text-left text-gray-700 leading-relaxed whitespace-pre-line">
                   {item.description}
                 </p>
                 <motion.div whileHover={{ scale: 1.1 }}>
@@ -95,11 +95,11 @@ export default function Home() {
             </>
           ) : (
             <>
-              <div className="flex flex-col justify-center self-center md:items-start items-center max-w-lg gap-4">
-                <h1 className="font-bold text-3xl md:text-5xl text-center md:text-left">
+              <div className="flex flex-col justify-center self-center md:items-start items-center max-w-lg gap-4 md:mx-auto">
+                <h1 className="font-bold text-3xl md:text-5xl text-center md:text-left ">
                   {item.title}
                 </h1>
-                <p className="text-lg text-center md:text-left text-gray-700 leading-relaxed">
+                <p className="text-lg text-center md:text-left text-gray-700 leading-relaxed whitespace-pre-line">
                   {item.description}
                 </p>
                 <motion.div whileHover={{ scale: 1.1 }}>
@@ -118,7 +118,7 @@ export default function Home() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] max-w-full object-cover rounded-lg shadow-lg"
+                  className=" h-[280px] md:w-auto md:h-[500px] max-w-full object-cover rounded-lg shadow-lg cursor-pointer"
                 />
               </motion.div>
             </>

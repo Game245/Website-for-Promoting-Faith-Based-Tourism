@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoIosShareAlt } from "react-icons/io";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
@@ -11,21 +11,20 @@ import Card from "../../components/Card";
 import { FaHome } from "react-icons/fa";
 import { motion } from "framer-motion"; // เพิ่มการ import motion
 
-export default function Myth5() {
+export default function ContentTample9() {
   const currentDate = new Date().toLocaleDateString("th-TH");
-
   const [likes, setLikes] = useState(false);
-
-  const displayedItems = [Datacontent[4].id];
+  const displayedItems = [Datacontent[8].id];
 
   const clicklikes = () => {
     setLikes(!likes);
   };
+
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    if (Datacontent.length > 4) {
-      setContent(Datacontent[4]);
+    if (Datacontent.length > 8) {
+      setContent(Datacontent[8]);
     }
   }, []);
 
@@ -50,9 +49,9 @@ export default function Myth5() {
             <FaHome /> หน้าแรก
           </Link>
           <span className="text-gray-400">›</span>
-          <Link to="/myth">
+          <Link to="/destinations">
             <span className="text-gray-800 hover:underline hover:text-blue-400">
-              ตำนานและความเชื่อ
+              สถานที่ท่องเที่ยวเชิงศรัทธา (สายมู) อุบลราชธานี
             </span>
           </Link>
 
@@ -88,26 +87,43 @@ export default function Myth5() {
               </div>
               <div className="flex justify-center text-center border-b border-gray-300 mt-1">
                 <motion.h1
-                  className="font-bold text-4xl md:text-[80px] leading-tight mb-1"
+                  className="font-bold text-4xl md:text-[80px] leading-tight mb-5"
                   initial={{ y: -100, opacity: 0 }} // เริ่มที่ y = -100 และ opacity = 0
                   animate={{ y: 0, opacity: 1 }} // เมื่อโหลดแล้วขยับขึ้นและ opacity เพิ่ม
                   transition={{ duration: 0.6 }} // ระยะเวลา
                 >
-                  {Datacontent[4].title}
+                  {Datacontent[8].title}
                 </motion.h1>
               </div>
             </motion.div>
+
             {/* หัวข้อ */}
+            <div className="flex justify-center mt-6">
+              <a
+                href="https://www.paknamubonclub.com/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B2%E0%B8%A3/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%81/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={Datacontent[8].img}
+                  alt={Datacontent[8].title}
+                  className="md:w-full h-auto w-[600px]  rounded-lg  object-cover"
+                />
+              </a>
+            </div>
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
-              <h1 className="text-2xl font-bold">เรื่องเล่า</h1>
+              <p className="leading-relaxed  whitespace-pre-line">
+                {Datacontent[8].recommend}
+              </p>
+              <h1 className="text-2xl font-bold mt-6">ประวัติ</h1>
               <motion.p
                 className="leading-relaxed whitespace-pre-line"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                {Datacontent[4].myth}
+                {Datacontent[8].history}
               </motion.p>
             </div>
             {/* social media */}
@@ -117,14 +133,14 @@ export default function Myth5() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex gap-2 items-center">
-                {(Array.isArray(Datacontent[4].tagsmyth)
-                  ? Datacontent[4].tagsmyth
+              <div className="flex gap-2">
+                {(Array.isArray(Datacontent[8].tagsdestinations)
+                  ? Datacontent[8].tagsdestinations
                   : []
                 ).map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-200 rounded-[25px] px-2 py-1  md:rounded-full md:px-3 md:py-1 md:text-sm  text-[10px] font-bold  "
+                    className="bg-gray-200 rounded-full px-3 py-1 text-sm font-bold"
                   >
                     {tag}
                   </span>
@@ -144,6 +160,28 @@ export default function Myth5() {
                 </span>
               </button>
             </motion.div>
+            {/* YouTube Video */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
+              <div className="flex justify-center">
+                <iframe
+                  className="w-full md:h-96 h-64 rounded-lg"
+                  src={Datacontent[8].youtube}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
+              <div className="text-4xl font-bold text-center mb-5 flex justify-center items-center">
+                <FaMapLocationDot className="inline-block mr-2" />
+                <h1 className="inline-block">Location</h1>
+              </div>
+              <iframe
+                src={Datacontent[8].maps}
+                className="w-full md:h-150 h-80 rounded-lg"
+              ></iframe>
+            </div>
           </section>
         </div>
         <Comment />
@@ -158,7 +196,7 @@ export default function Myth5() {
                 .slice(0, 3)
                 // ✅ เอาแค่ 3 รายการ
                 .map((item) => (
-                  <Link key={item.id} to={`/myth${item.id}`}>
+                  <Link key={item.id} to={`/contenttample${item.id}`}>
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }} // เริ่มที่ opacity 0 และ ขนาดเล็ก
                       animate={{ opacity: 1, scale: 1 }} // เมื่อโหลดแล้วจะมี opacity 1 และขยายขนาด
