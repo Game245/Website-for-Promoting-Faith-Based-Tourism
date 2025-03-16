@@ -1,6 +1,5 @@
 import React from "react";
-import Temple from "../assets/images/Temple.png";
-import Temple1 from "../assets/images/ปก.jpg";
+import Temple1 from "../assets/images/Cover.jpg";
 
 export default function Header() {
   return (
