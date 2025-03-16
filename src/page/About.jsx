@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"; // นำเข้า framer-motion
-import kunakon from "../assets/images/kunakon.png";
-import sok from "../assets/images/Sok.png";
-import pich from "../assets/images/Pich.png";
-import yosita from "../assets/images/Yosita.png";
-import tana from "../assets/images/Tana.png";
-import wixa from "../assets/images/Wixa.png";
-import devid from "../assets/images/Devid.png";
+import Person1 from "../assets/images/Person1.png";
+import Person2 from "../assets/images/Person2.png";
+import Person3 from "../assets/images/Person3.png";
+import Person4 from "../assets/images/Person4.png";
+import Person5 from "../assets/images/Person5.png";
+import Person6 from "../assets/images/Person6.png";
+import Person7 from "../assets/images/Person7.png";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function About() {
   const [selectedMember, setSelectedMember] = useState(null);
   const teamMembers = [
-    { name: "นางสาวโยษิตา ชาชำนาน", img: yosita, quote: "เชื่อมั่นในพลังแห่งศรัทธา แล้วสิ่งดี ๆ จะเกิดขึ้น 🍀" },
-    { name: "นายคุณากร ภูถาดงา", img: kunakon, quote: "เสริมดวงด้วยความดี แล้วโชคจะเข้าหาเราเอง ✨" },
-    { name: "นายธนชาติ ธนงศักดิ์", img: tana, quote: "สวดมนต์ทุกวัน เสริมพลังงานบวกให้ชีวิต 🙏" },
-    { name: "นายวิศวชิต กิ่งแสง", img: wixa, quote: "อย่าหยุดขอพร เพราะคำอธิษฐานเป็นพลังให้เราเดินต่อ 🌟" },
-    { name: "นาย SOK BORAMY SUY", img: sok, quote: "มั่นใจในโชคชะตา แล้วชีวิตจะพาไปในทางที่ดี 🚀" },
-    { name: "นาย SOVICHEAT CHUM", img: devid, quote: "ความเชื่อเป็นพลังงานที่ดึงดูดสิ่งดี ๆ 🧲" },
-    { name: "นางสาว PICHVOLEAK KUN", img: pich, quote: "มูอย่างมีสติ แล้วโชคจะเข้าหาแบบไม่ต้องขอ 🍃" },
+    { name: "นางสาวโยษิตา ชาชำนาน", img:  Person4 , quote: "เชื่อมั่นในพลังแห่งศรัทธา แล้วสิ่งดี ๆ จะเกิดขึ้น 🍀" },
+    { name: "นายคุณากร ภูถาดงา", img:  Person1, quote: "เสริมดวงด้วยความดี แล้วโชคจะเข้าหาเราเอง ✨" },
+    { name: "นายธนชาติ ธนงศักดิ์", img:  Person5, quote: "สวดมนต์ทุกวัน เสริมพลังงานบวกให้ชีวิต 🙏" },
+    { name: "นายวิศวชิต กิ่งแสง", img:  Person6, quote: "อย่าหยุดขอพร เพราะคำอธิษฐานเป็นพลังให้เราเดินต่อ 🌟" },
+    { name: "นาย SOK BORAMY SUY", img:  Person2, quote: "มั่นใจในโชคชะตา แล้วชีวิตจะพาไปในทางที่ดี 🚀" },
+    { name: "นาย SOVICHEAT CHUM", img:  Person7, quote: "ความเชื่อเป็นพลังงานที่ดึงดูดสิ่งดี ๆ 🧲" },
+    { name: "นางสาว PICHVOLEAK KUN", img:  Person3, quote: "มูอย่างมีสติ แล้วโชคจะเข้าหาแบบไม่ต้องขอ 🍃" },
   ];
 
   return (
