@@ -78,13 +78,13 @@ export default function Comment() {
                     onChange={(e) => setEditText(e.target.value)}
                   ></textarea>
                   <button
-                    className="mr-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                    className="mr-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer"
                     onClick={() => setConfirmAction("edit")}
                   >
                     บันทึก
                   </button>
                   <button
-                    className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 cursor-pointer"
                     onClick={() => setEditingIndex(null)}
                   >
                     ยกเลิก
@@ -118,7 +118,7 @@ export default function Comment() {
           <div className="bg-white p-6 rounded-lg shadow-lg w-80">
             <h3 className="text-lg font-semibold mb-4">จัดการความคิดเห็น</h3>
             <button
-              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer"
               onClick={() => {
                 startEdit(menuIndex);
                 setMenuIndex(null);
@@ -127,7 +127,7 @@ export default function Comment() {
               ✏️ แก้ไข
             </button>
             <button
-              className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100"
+              className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100 cursor-pointer"
               onClick={() => {
                 setConfirmAction(menuIndex);
                 setMenuIndex(null);
@@ -136,7 +136,7 @@ export default function Comment() {
               🗑️ ลบ
             </button>
             <button
-              className="mt-4 w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600"
+              className="mt-4 w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 cursor-pointer"
               onClick={() => setMenuIndex(null)}
             >
               ปิด

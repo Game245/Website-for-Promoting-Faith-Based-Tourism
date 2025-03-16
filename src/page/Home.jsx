@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       {/* ส่วนหัว */}
       <motion.section
-        className="container mx-auto flex flex-col gap-8 mt-5 h-auto p-4 md:hidden"
+        className="container mx-auto flex flex-col gap-8  h-auto p-4 md:hidden "
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -35,7 +35,13 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: item.id * 0.1 }}
             >
-              <Card {...item} />
+              <Link
+                key={item.id}
+                to={`/contenttample${item.id}`}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <Card {...item} />
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -43,7 +49,7 @@ export default function Home() {
 
       {/* ส่วนเนื้อหาหลัก */}
       <motion.div
-        className="mt-10"
+        className="mt-50"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

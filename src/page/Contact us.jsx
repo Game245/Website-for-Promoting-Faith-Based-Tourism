@@ -161,13 +161,13 @@ export default function ContactUs() {
               </p>
               <div className="mt-4 flex justify-center gap-4">
                 <button
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer"
                   onClick={handleConfirmSend}
                 >
                   ✅ ยืนยัน
                 </button>
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer"
                   onClick={handleCancelSend}
                 >
                   ❌ ยกเลิก

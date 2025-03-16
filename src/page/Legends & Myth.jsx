@@ -17,7 +17,7 @@ export default function Legends_Myth() {
     item.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  const categories = ["ทั้งหมด", "ความรัก", "ความเชื่อ", "เรื่องเล่า"];
+  const categories = ["ทั้งหมด", "ความรัก", "ความเชื่อ", "เรื่องเล่าชาวบ้าน"];
 
   return (
     <>

@@ -193,7 +193,7 @@ export default function Rituals7() {
                 transition={{ duration: 0.3 }}
                 className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm bg-black/30"
               >
-                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
+                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md m-5">
                   <div className="flex justify-between items-center">
                     <h2 className="text-xl font-bold">📅 กิจกรรมปี 68</h2>
                     <FaTimes
@@ -202,7 +202,7 @@ export default function Rituals7() {
                     />
                   </div>
                   <ul className="mt-4 text-gray-700">
-                    {activities.map((event, index) => (
+                    {activities[6].dedcriptionactivities.map((event, index) => (
                       <li key={index} className="mb-2">
                         ✅ {event}
                       </li>
@@ -212,33 +212,47 @@ export default function Rituals7() {
               </motion.div>
             )}
 
-            {/* 🏺 ป๊อบอัพวัตถุมงคล */}
+            {/* 🏆 ป๊อบอัพกิจกรรม */}
             {showPopup === "amulet" && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
-                className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm bg-black/30 px-5"
+                className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm bg-black/30 px-5 z-50"
               >
-                <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-xl font-bold">🏺 {amuletData.name}</h2>
-                    <FaTimes
-                      className="cursor-pointer text-red-500"
-                      onClick={() => setShowPopup(null)}
-                    />
-                  </div>
-                  <img
-                    src={amuletData.image}
-                    alt={amuletData.name}
-                    className="w-full h-40 object-cover rounded-md mt-2"
+                <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm md:max-w-lg lg:max-w-xl mt-10 max-h-screen overflow-y-auto relative">
+                  {/* ปุ่มปิด */}
+                  <FaTimes
+                    className="absolute top-5 right-5 cursor-pointer text-red-500 text-2xl"
+                    onClick={() => setShowPopup(null)}
                   />
-                  <p className="text-gray-700 mt-2">{amuletData.description}</p>
-                  <p className="text-gray-900 font-bold mt-2">
-                    💰 ราคา: {amuletData.price}
+
+                  {/* หัวข้อ */}
+                  <h2 className="text-1xl md:text-xl font-bold text-center ">
+                    🏺 {amuletData[6].name}
+                  </h2>
+
+                  {/* รูปภาพแบบ responsive */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 w-full justify-items-center p-5">
+                    {amuletData[6].image.map((imgSrc, index) => (
+                      <img
+                        key={index}
+                        src={imgSrc}
+                        alt={`${amuletData[6].name} - ${index + 1}`}
+                        className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-md"
+                      />
+                    ))}
+                  </div>
+
+                  {/* รายละเอียดพระเครื่อง */}
+                  <p className="text-gray-700 text-sm md:text-base mt-2">
+                    {amuletData[6].description}
                   </p>
-                  <p className="text-gray-700 mt-2">
-                    🙏 วิธีบูชา: {amuletData.howToWorship}
+                  <p className="text-gray-900 font-bold text-sm md:text-base mt-2">
+                    💰 ราคา: {amuletData[6].price}
+                  </p>
+                  <p className="text-gray-700 text-sm md:text-base mt-2">
+                    🙏 วิธีบูชา: {amuletData[6].howToWorship}
                   </p>
                 </div>
               </motion.div>
@@ -251,8 +265,8 @@ export default function Rituals7() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex gap-2 items-center">
-                {(Array.isArray(Datacontent[7].tagsmyth)
-                  ? Datacontent[6].tagsmyth
+                {(Array.isArray(Datacontent[6].tagsrituals)
+                  ? Datacontent[6].tagsrituals
                   : []
                 ).map((tag) => (
                   <span
