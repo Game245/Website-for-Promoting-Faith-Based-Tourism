@@ -8,22 +8,22 @@ import LOGO from "./assets/images/LOGO.png";
 import TY from "./assets/images/BanTamyae.png";
 import SHM from "./assets/images/CityPillarShrine.png";
 import VHPC from "./assets/images/GrandfatherCha.png";
-import Picture1 from "./assets/images/Picture1.jpg";
-import Picture2 from "./assets/images/Picture2.jpg";
-import Picture3 from "./assets/images/Picture3.jpg";
-import Picture4 from "./assets/images/Picture4.jpg";
-import Picture5 from "./assets/images/Picture5.jpg";
-import Picture6 from "./assets/images/Picture6.jpg";
-import Picture7 from "./assets/images/Picture7.jpg";
-import Picture8 from "./assets/images/Picture8.jpg";
-import Picture9 from "./assets/images/Picture9.jpg";
-import Picture10 from "./assets/images/Picture10.jpg";
-import Picture11 from "./assets/images/Picture11.jpg";
-import Picture12 from "./assets/images/Picture12.jpg";
-import Picture13 from "./assets/images/Picture13.jpg";
-import Picture14 from "./assets/images/Picture14.jpg";
-import Picture15 from "./assets/images/Picture15.jpg";
-import Picture16 from "./assets/images/Picture16.jpg";
+import Picture1 from "./assets/images/Picture1.png";
+import Picture2 from "./assets/images/Picture2.png";
+import Picture3 from "./assets/images/Picture3.png";
+import Picture4 from "./assets/images/Picture4.png";
+import Picture5 from "./assets/images/Picture5.png";
+import Picture6 from "./assets/images/Picture6.png";
+import Picture7 from "./assets/images/Picture7.png";
+import Picture8 from "./assets/images/Picture8.png";
+import Picture9 from "./assets/images/Picture9.png";
+import Picture10 from "./assets/images/Picture10.png";
+import Picture11 from "./assets/images/Picture11.png";
+import Picture12 from "./assets/images/Picture12.png";
+import Picture13 from "./assets/images/Picture13.png";
+import Picture14 from "./assets/images/Picture14.png";
+import Picture15 from "./assets/images/Picture15.png";
+import Picture16 from "./assets/images/Picture16.png";
 
 export const Image = [
   {
