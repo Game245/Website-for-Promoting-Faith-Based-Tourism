@@ -8,22 +8,22 @@ import LOGO from "./assets/images/LOGO.png";
 import TY from "./assets/images/BanTamyae.png";
 import SHM from "./assets/images/CityPillarShrine.png";
 import VHPC from "./assets/images/GrandfatherCha.png";
-import Picture1 from "./assets/images/Picture1.png";
-import Picture2 from "./assets/images/Picture2.png";
-import Picture3 from "./assets/images/Picture3.png";
-import Picture4 from "./assets/images/Picture4.png";
-import Picture5 from "./assets/images/Picture5.png";
-import Picture6 from "./assets/images/Picture6.png";
-import Picture7 from "./assets/images/Picture7.png";
-import Picture8 from "./assets/images/Picture8.png";
-import Picture9 from "./assets/images/Picture9.png";
-import Picture10 from "./assets/images/Picture10.png";
-import Picture11 from "./assets/images/Picture11.png";
-import Picture12 from "./assets/images/Picture12.png";
-import Picture13 from "./assets/images/Picture13.png";
-import Picture14 from "./assets/images/Picture14.png";
-import Picture15 from "./assets/images/Picture15.png";
-import Picture16 from "./assets/images/Picture16.png";
+import Picture1 from "./assets/images/Amulets1.png";
+import Picture2 from "./assets/images/Amulets2.png";
+import Picture3 from "./assets/images/Amulets3.png";
+import Picture4 from "./assets/images/Amulets4.png";
+import Picture5 from "./assets/images/Amulets5.png";
+import Picture6 from "./assets/images/Amulets6.png";
+import Picture7 from "./assets/images/Amulets7.png";
+import Picture8 from "./assets/images/Amulets8.png";
+import Picture9 from "./assets/images/Amulets9.png";
+import Picture10 from "./assets/images/Amulets10.png";
+import Picture11 from "./assets/images/Amulets11.png";
+import Picture12 from "./assets/images/Amulets12.png";
+import Picture13 from "./assets/images/Amulets13.png";
+import Picture14 from "./assets/images/Amulets14.png";
+import Picture15 from "./assets/images/Amulets15.png";
+import Picture16 from "./assets/images/Amulets16.png";
 
 export const Image = [
   {
