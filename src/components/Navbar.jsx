@@ -11,6 +11,7 @@ function Navbar() {
   const location = useLocation();
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
+  const navbarRef = useRef(null);
 
   const openToggle = () => setToggle((prev) => !prev);
 
@@ -18,9 +19,14 @@ function Navbar() {
     setDropdownOpen((prev) => !prev);
   };
 
+  const closeAllMenus = () => {
+    setToggle(false);
+    setDropdownOpen(false);
+  };
+
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
-    setDropdownOpen(false);
+    closeAllMenus();
   };
 
   useEffect(() => {
@@ -29,24 +35,24 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    setDropdownOpen(false);
-    window.scrollTo(0, 0); // Scroll to the top when route changes
+    closeAllMenus();
+    window.scrollTo(0, 0); // Scroll to top when changing route
   }, [location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        dropdownOpen &&
+        !navbarRef.current?.contains(event.target) &&
         !dropdownRef.current?.contains(event.target) &&
         !buttonRef.current?.contains(event.target)
       ) {
-        setDropdownOpen(false);
+        closeAllMenus();
       }
     };
 
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [dropdownOpen]);
+  }, []);
 
   const ActiveLink = ({ children, to }) => (
     <NavLink
@@ -56,6 +62,7 @@ function Navbar() {
           ? "text-red-500 p-2 rounded-lg transition-colors duration-300 ease-in-out"
           : "text-black hover:text-sky-500 hover:bg-gray-300 p-2 rounded-lg transition-colors duration-300 ease-in-out"
       }
+      onClick={closeAllMenus} // ปิดเมนูเมื่อกดลิงก์
     >
       {children}
     </NavLink>
@@ -63,12 +70,13 @@ function Navbar() {
 
   return (
     <nav
+      ref={navbarRef}
       className={`relative font-bold h-auto sticky top-0 z-50 bg-opacity-100 ${
         isScrolled ? "bg-white/60" : "bg-white/20"
       } backdrop-blur-md`}
     >
       <div className="container mx-auto max-w-7xl h-auto p-5 flex flex-col md:flex-row md:justify-between md:items-center md:h-[80px]">
-        <Link to="/">
+        <Link to="/" onClick={closeAllMenus}>
           <img
             src={LOGO}
             alt="LOGO สถานที่ท่องเที่ยวเชิงศรัทธา (สายมู) อุบลราชธานี"
@@ -78,7 +86,7 @@ function Navbar() {
         <ul
           className={`${
             !Toggle ? "hidden" : "flex"
-          } flex flex-col my-8 md:flex md:flex-row md:bg-zine-600 rounded-lg p-2`}
+          } flex flex-col my-8 md:flex md:flex-row  rounded-lg p-2`}
         >
           <li className="my-2 md:mx-4">
             <ActiveLink to="/">หน้าแรก</ActiveLink>

@@ -4,10 +4,10 @@ import Temple1 from "../assets/images/Cover.jpg";
 export default function Header() {
   return (
     <section
-      className=" md:w-full md:min-h-screen h-auto bg-cover bg-center flex items-center justify-center text-white "
+      className="max-w-full md:min-h-screen h-auto bg-cover bg-center flex items-center justify-center text-white "
       
     >
-      <div className=" inset-0 md:w-full md:h-screen h-auto ">
+      <div className="max-w-full md:h-screen h-auto ">
         <img src={Temple1} />
       </div>
     </section>

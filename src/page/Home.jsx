@@ -54,7 +54,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-center text-2xl md:text-4xl font-bold py-3">
+        <h1 className="text-center text-2xl md:text-4xl font-bold py-3 hidden md:block">
           สถานที่ท่องเที่ยวเชิงศรัทธา <br />
           (สายมู) อุบลราชธานี
         </h1>
