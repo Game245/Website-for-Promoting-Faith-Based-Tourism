@@ -95,7 +95,7 @@ export default function About() {
             onClick={() => setSelectedMember(teamMembers[0])}
           >
             <motion.img
-              src={yosita}
+              src={Person4}
               alt="รูปภาพของ นางสาวโยษิตา ชาชำนาน"
               className="w-full h-auto rounded-lg"
               initial={{ opacity: 0, scale: 0.5 }}
