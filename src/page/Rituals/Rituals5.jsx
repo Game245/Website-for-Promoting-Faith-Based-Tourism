@@ -137,7 +137,7 @@ export default function Rituals5() {
             <div className="flex justify-end md:gap-4 gap-2 mt-5 mb-5">
               {/* ปุ่มเสียง */}
               <motion.button
-                onClick={() => readAloud(Datacontent[0].wish)}
+                onClick={() => readAloud(Datacontent[4].wish)}
                 className={`${
                   isPlaying
                     ? "bg-red-500 hover:bg-red-600"
