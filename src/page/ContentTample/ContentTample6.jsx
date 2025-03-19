@@ -10,6 +10,9 @@ import { FaHeart } from "react-icons/fa";
 import Card from "../../components/Card";
 import { FaHome } from "react-icons/fa";
 import { motion } from "framer-motion"; // เพิ่มการ import motion
+import Gallery5 from "../../components/Gallery5";
+import { TbView360Number } from "react-icons/tb";
+import { FaYoutube } from "react-icons/fa";
 
 export default function ContentTample6() {
   const currentDate = new Date().toLocaleDateString("th-TH");
@@ -99,11 +102,7 @@ export default function ContentTample6() {
 
             {/* หัวข้อ */}
             <div className="flex justify-center mt-6">
-              <a
-                href="https://www.paknamubonclub.com/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B2%E0%B8%A3/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%81/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="" target="_blank" rel="noopener noreferrer">
                 <img
                   src={Datacontent[5].img}
                   alt={Datacontent[5].title}
@@ -111,6 +110,7 @@ export default function ContentTample6() {
                 />
               </a>
             </div>
+            <Gallery5 />
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <p className="leading-relaxed  whitespace-pre-line">
@@ -160,11 +160,43 @@ export default function ContentTample6() {
                 </span>
               </button>
             </motion.div>
+            {/* อ้างอิง */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+              <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+                วัดป่าบ้านบาก หรือ วัดป่าพระพิฆเณศวร์ ประวัติ ความเป็นมา.
+                (2567). สืบค้นเมื่อ 10 มีนาคม 2568, จาก
+                <a
+                  href="https://www.paknamubonclub.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  paknamubonclub.com
+                </a>
+              </p>
+
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+                📌 ช่องทางติดต่อวัด : FB :
+                <a
+                  href="https://www.facebook.com/Watbanbak1/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  facebook.com/Watbanbak1
+                </a>
+              </p>
+            </div>
             {/* YouTube Video */}
-            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
-              <div className="flex justify-center">
+            <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg max-w-5xl mx-auto">
+              <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">
+                <FaYoutube className="mr-2 text-red-500" />
+                <h2 className="text-1xl md:text-4xl font-bold">วิดีโอแนะนำ</h2>
+              </div>
+              <div className="relative w-full pb-[56.25%] h-0 rounded-lg overflow-hidden shadow-md">
                 <iframe
-                  className="w-full md:h-96 h-64 rounded-lg"
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
                   src={Datacontent[5].youtube}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -172,15 +204,39 @@ export default function ContentTample6() {
                 ></iframe>
               </div>
             </div>
-            <div className="mt-6 bg-gray-100 shadow-lg p-2 rounded-lg">
-              <div className="text-4xl font-bold text-center mb-5 flex justify-center items-center">
-                <FaMapLocationDot className="inline-block mr-2" />
-                <h1 className="inline-block">Location</h1>
+            <div className="mt-6 bg-gray-100 shadow-lg p-6 rounded-lg max-w-5xl mx-auto">
+              {/* Section: แผนที่ */}
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">
+                  <FaMapLocationDot className="mr-2 text-blue-500" />
+                  <h1>แผนที่</h1>
+                </div>
+                <div className="mt-4">
+                  <iframe
+                    src={Datacontent[5].maps}
+                    className="w-full h-80 md:h-120 rounded-lg shadow-md"
+                    loading="lazy"
+                  ></iframe>
+                </div>
               </div>
-              <iframe
-                src={Datacontent[5].maps}
-                className="w-full md:h-150 h-80 rounded-lg"
-              ></iframe>
+
+              {/* Section: ชมสถานที่รอบทิศ 360° */}
+              <div className="text-center mt-10">
+                <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">
+                  <TbView360Number className="mr-2 text-green-500" />
+                  <h1>ชมสถานที่รอบทิศ 360°</h1>
+                </div>
+                <div className="mt-4">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!4v1742388685995!6m8!1m7!1sI_xvhJlOp6XpL0yip1Nlgw!2m2!1d15.27010570724651!2d104.9823643374278!3f147.03009142942184!4f-7.936837492783724!5f1.1924812503605782"
+                    className="w-full h-80 md:h-120 rounded-lg shadow-md"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
             </div>
           </section>
         </div>
