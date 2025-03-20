@@ -146,6 +146,23 @@ export default function Myth8() {
             </motion.div>
           </section>
         </div>
+        {/* อ้างอิง */}
+        <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+          <p className="mt-2 text-gray-700 whitespace-pre-line">
+          สวท.อุบลราชธานี 98.50 MHz. (2564).  ศาลหลักเมืองอุบลราชธานี. สืบค้นเมื่อ 10 มีนาคม 2568,  จาก 
+            <a
+              href=" https://www.facebook.com/watch/?v=3168282513273682"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 underline"
+            >
+              facebook
+            </a>
+          </p>
+
+         
+        </div>
         <Comment />
         <section className="mt-10 mb-10">
           {/* Additional Information */}

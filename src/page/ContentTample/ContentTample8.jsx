@@ -103,7 +103,7 @@ export default function ContentTample8() {
             {/* หัวข้อ */}
             <div className="flex justify-center mt-6">
               <a
-                href="https://www.paknamubonclub.com/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B2%E0%B8%A3/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%81/"
+                href="https://www.wongnai.com/reviews/9dc36f608eff4c02bb8208308d858687"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -114,7 +114,7 @@ export default function ContentTample8() {
                 />
               </a>
             </div>
-            <Gallery7/>
+            <Gallery7 />
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <p className="leading-relaxed  whitespace-pre-line">
@@ -164,6 +164,34 @@ export default function ContentTample8() {
                 </span>
               </button>
             </motion.div>
+            {/* อ้างอิง */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+              <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+              nukkpidet. (2565).  ไหว้ขอพร ศาลหลักเมืองอุบลราชธานี สักการะสิ่งศักดิ์สิทธิ์เมืองอุบล. สืบค้นเมื่อ 10 มีนาคม 2568,  จาก 
+                <a
+                  href="https://travel.trueid.net/detail/mqzXLDgd15J0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  travel.trueid.net
+                </a>
+              </p>
+
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+                📌แหล่งที่มารูปภาพ: Pipatpong Promchan, There are Many Stories, EakEatAll , Love food! Love trip!. (2565-2566). รีวิว ศาลหลักเมือง อุบลราชธานี. สืบค้นเมื่อ 10 มีนาคม 2568,  จาก 
+                <a
+                  href="https://www.wongnai.com/reviews/9dc36f608eff4c02bb8208308d858687"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  wongnai.com
+                </a>
+              </p>
+
+            </div>
             {/* YouTube Video */}
             <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg max-w-5xl mx-auto">
               <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">

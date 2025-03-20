@@ -293,6 +293,22 @@ export default function Rituals8() {
             </motion.div>
           </section>
         </div>
+        {/* อ้างอิง */}
+        <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+          <p className="mt-2 text-gray-700 whitespace-pre-line">
+            ขั้นตอนการไหว้ศาลหลักเมืองให้เกิดผลดีแก่ชีวิต. (2562). สืบค้นเมื่อ
+            10 มีนาคม 2568, จาก
+            <a
+              href="https://www.sanook.com/horoscope/170201/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 underline"
+            >
+              sanook.com
+            </a>
+          </p>
+        </div>
         <section className="mt-10 mb-10">
           {/* Additional Information */}
           <h1 className="text-center text-2xl font-bold py-3">เพิ่มเติม</h1>

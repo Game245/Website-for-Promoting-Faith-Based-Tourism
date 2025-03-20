@@ -103,7 +103,7 @@ export default function ContentTample7() {
             {/* หัวข้อ */}
             <div className="flex justify-center mt-6">
               <a
-                href="https://www.google.com/maps/embed?pb=!4v1742389193656!6m8!1m7!1strZtohyA1AwqcV28HZYtfg!2m2!1d15.26911780552326!2d104.8651708314926!3f147.54598172487744!4f-17.269224889597353!5f1.1924812503605782"
+                href="https://travel.trueid.net/detail/xo2XXgl3nYXK"
                 target="_blank"
                 rel="noopener noreferrer"
               >

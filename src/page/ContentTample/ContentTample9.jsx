@@ -103,7 +103,7 @@ export default function ContentTample9() {
             {/* หัวข้อ */}
             <div className="flex justify-center mt-6">
               <a
-                href="https://www.paknamubonclub.com/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B2%E0%B8%A3/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%81/"
+                href="http://dhammathai.org/watthai/northeast/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -180,14 +180,14 @@ export default function ContentTample9() {
               </p>
 
               <p className="mt-2 text-gray-700 whitespace-pre-line">
-                📌 ช่องทางติดต่อวัด : FB :
+                📌แหล่งที่มารูปภาพ: วัดหนองป่าพง - จ.อุบลราชธานี.(มปป). สืบค้นเมื่อ 10 มีนาคม 2568,  จาก  
                 <a
-                  href="https://www.facebook.com/p/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AB%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%87-%E0%B8%A7%E0%B8%B2%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%8A%E0%B8%B3%E0%B8%A3%E0%B8%B2%E0%B8%9A-%E0%B8%AD%E0%B8%B8%E0%B8%9A%E0%B8%A5%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5-100064921325246/?locale=th_TH"
+                  href="http://dhammathai.org/watthai/northeast/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:text-blue-700 underline"
                 >
-                  facebook
+                  dhammathai.org
                 </a>
               </p>
             </div>

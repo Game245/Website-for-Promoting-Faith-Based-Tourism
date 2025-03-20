@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 
-import GaneshaForest1 from "../assets/images/GaneshaForest1.jpg";
-import GaneshaForest2 from "../assets/images/GaneshaForest2.jpg";
-import GaneshaForest3 from "../assets/images/GaneshaForest3.jpg";
-import GaneshaForest4 from "../assets/images/GaneshaForest4.jpg";
-import GaneshaForest5 from "../assets/images/GaneshaForest5.jpg";
+import BanTamyae1 from "../assets/images/BanTamyae1.jpg";
+import BanTamyae2 from "../assets/images/BanTamyae2.jpg";
+import BanTamyae3 from "../assets/images/BanTamyae3.jpg";
+import BanTamyae4 from "../assets/images/BanTamyae4.jpg";
+import BanTamyae5 from "../assets/images/BanTamyae5.jpg";
 
 // ✅ แก้ไขให้เป็นอาร์เรย์ของสตริง
 const images = [
-  GaneshaForest1,
-  GaneshaForest2,
-  GaneshaForest3,
-  GaneshaForest4,
-  GaneshaForest5,
+  BanTamyae1,
+  BanTamyae2,
+  BanTamyae3,
+  BanTamyae4,
+  BanTamyae5,
 ];
 
 function Gallery6({}) {
