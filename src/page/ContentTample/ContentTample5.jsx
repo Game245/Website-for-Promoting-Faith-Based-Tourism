@@ -114,7 +114,7 @@ export default function ContentTample5() {
                 />
               </a>
             </div>
-            <Gallery4/>
+            <Gallery4 />
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <p className="leading-relaxed  whitespace-pre-line">
@@ -164,6 +164,33 @@ export default function ContentTample5() {
                 </span>
               </button>
             </motion.div>
+            {/* อ้างอิง */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+              <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+              กษมา ดอกดวง, ปิยวัฒน์ อัฒจักร, สิริวรัญญา เลิศสกุลรุ่งเรือง, ดร.บุญมี โททำ, พงษ์เทพ บุญกล้า. (2566).  วัดป่าปากโดม. สืบค้นเมื่อ 10 มีนาคม 2568,  จาก 
+                <a
+                  href="https://legendofnaga.com/location-view.php?id=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  legendofnaga.com
+                </a>
+              </p>
+
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+                📌 ช่องทางติดต่อวัด : FB :
+                <a
+                  href="https://www.facebook.com/0829934283tak/?locale=th_TH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  facebook
+                </a>
+              </p>
+            </div>
             {/* YouTube Video */}
             <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg max-w-5xl mx-auto">
               <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">

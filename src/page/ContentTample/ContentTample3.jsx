@@ -114,7 +114,7 @@ export default function ContentTample3() {
                 />
               </a>
             </div>
-            <Gallery2/>
+            <Gallery2 />
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
               <p className="leading-relaxed  whitespace-pre-line">
@@ -164,6 +164,33 @@ export default function ContentTample3() {
                 </span>
               </button>
             </motion.div>
+            {/* อ้างอิง */}
+            <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+              <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+              แหล่งที่มา : 
+                <a
+                  href="https://www.esanpedia.oar.ubu.ac.th/esaninfo/?p=432"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  esanpedia.oar.ubu.ac.th
+                </a>
+              </p>
+
+              <p className="mt-2 text-gray-700 whitespace-pre-line">
+                📌 ช่องทางติดต่อวัด : FB :
+                <a
+                  href="https://www.facebook.com/p/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%98%E0%B8%B2%E0%B8%95%E0%B8%B8%E0%B8%AB%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%9A%E0%B8%B1%E0%B8%A7-100064583836945/?locale=th_TH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700 underline"
+                >
+                  facebook
+                </a>
+              </p>
+            </div>
             {/* YouTube Video */}
             <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg max-w-5xl mx-auto">
               <div className="flex items-center justify-center text-1xl md:text-4xl font-bold">

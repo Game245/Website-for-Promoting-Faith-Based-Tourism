@@ -124,7 +124,6 @@ export default function Rituals2() {
 
             {/* เนื้อหา */}
             <div className="my-5 text-justify text-gray-700">
-             
               <motion.p
                 className="leading-relaxed whitespace-pre-line"
                 initial={{ opacity: 0, y: 20 }}
@@ -296,7 +295,34 @@ export default function Rituals2() {
             </motion.div>
           </section>
         </div>
+        {/* อ้างอิง */}
+        <div className="mt-6 bg-gray-100 shadow-lg p-4 rounded-lg border-l-4 border-blue-500 max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-blue-600">📌 อ้างอิง</h2>
+          <p className="mt-2 text-gray-700 whitespace-pre-line">
+            สรุปขั้นตอนการถวายสังฆทานและบทสวดถวายที่สายบุญควรรู้!. (2567).
+            สืบค้นเมื่อ 10 มีนาคม 2568, จาก
+            <a
+              href="https://www.lotuss.com/th/blog/offering-dedicated-to-"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 underline"
+            >
+              lotuss.com
+            </a>
+          </p>
 
+          <p className="mt-2 text-gray-700 whitespace-pre-line">
+            📌 ช่องทางติดต่อวัด : FB :
+            <a
+              href="https://www.facebook.com/p/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 underline"
+            >
+              facebook
+            </a>
+          </p>
+        </div>
         {/* Additional Information Section */}
         <section className="mt-10 mb-10">
           <motion.h1
