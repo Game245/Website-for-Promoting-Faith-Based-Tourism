@@ -35,7 +35,6 @@ function Gallery7({}) {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-4">Gallery</h1>
       <div className="flex overflow-x-auto space-x-4 p-2 scrollbar-hide">
         {images.map((img, index) => (
           <motion.img
